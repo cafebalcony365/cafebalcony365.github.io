@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cafe 365</title>
-  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <!-- فونت فارسی -->
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=IranNastaliq&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -20,20 +21,27 @@
     /* بنر بالا */
     .banner {
       width: 100%;
-      height: 220px;
+      height: 250px;
       background: url('banner.jpg') center/cover no-repeat;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       border-bottom: 5px solid #ffd700;
     }
     .banner h1 {
-      background: rgba(0,0,0,0.6);
-      padding: 15px 30px;
-      border-radius: 15px;
-      font-size: 2rem;
+      font-family: "IranNastaliq", cursive;
+      font-size: 2.5rem;
       color: #ffd700;
-      text-shadow: 0 0 15px rgba(255,215,0,0.7);
+      text-shadow: 0 0 15px rgba(255,215,0,0.9);
+      background: rgba(0,0,0,0.5);
+      padding: 10px 25px;
+      border-radius: 20px;
+    }
+
+    header p {
+      margin-top: 10px;
+      color: #00b3a4;
+      font-size: 1rem;
     }
 
     /* کارت‌های منو */
@@ -50,39 +58,57 @@
       position: relative;
       border-radius: 25px;
       overflow: hidden;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 5px solid #ffd700; /* قاب سنتی طلایی */
+      height: 200px;
+      min-width: 220px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border: 6px double #ffd700; /* قاب سنتی طلایی */
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
     .menu-card::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.35);
     }
     .menu-card h2 {
-      position: absolute;
-      bottom: 15px;
-      left: 0;
-      right: 0;
+      position: relative;
+      margin: 0 0 20px;
       font-size: 1.3rem;
-      color: #fff;
+      font-family: "IranNastaliq", cursive;
       text-shadow: 0 0 10px rgba(0,0,0,0.8);
-      margin: 0;
+      z-index: 2;
     }
     .menu-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-8px) scale(1.05);
       box-shadow: 0 15px 30px rgba(255,215,0,0.4);
     }
 
-    .menu-card {
-      background-size: cover;
-      background-position: center;
-      height: 180px;
+    /* موبایل اسکرول افقی */
+    @media (max-width: 600px) {
+      .menu-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 15px;
+        padding-bottom: 10px;
+      }
+      .menu-card {
+        min-width: 180px;
+        height: 150px;
+      }
+      .menu-card h2 {
+        font-size: 1rem;
+      }
     }
 
-    /* نوار پایین */
+    /* نوار دکمه‌های پایین */
     .footer-buttons {
       display: flex;
       justify-content: center;
@@ -94,13 +120,13 @@
     .footer-buttons a {
       width: 60px;
       height: 60px;
-      background: #222;
       border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #ffd700;
+      background: #222;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-      border: 2px solid #ffd700;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .footer-buttons a:hover {
@@ -112,41 +138,35 @@
       height: 70%;
       object-fit: contain;
     }
-
-    @media (max-width: 600px) {
-      .banner h1 {
-        font-size: 1.4rem;
-      }
-      .menu-card h2 {
-        font-size: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
-  <!-- بنر بالا -->
+  <!-- بنر -->
   <div class="banner">
     <h1>Cafe 365</h1>
   </div>
+  <header>
+    <p>پناه حال خوب هر روز سال</p>
+  </header>
 
   <!-- کارت‌های منو -->
   <div class="menu-container">
-    <a href="menu1.html" class="menu-card" style="background-image: url('morning.jpg');">
+    <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');">
       <h2>صبح دلبرانه</h2>
     </a>
-    <a href="menu2.html" class="menu-card" style="background-image: url('cold.jpg');">
+    <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye khial.jpg');">
       <h2>خنکای خیال</h2>
     </a>
-    <a href="menu3.html" class="menu-card" style="background-image: url('hot.jpg');">
+    <a href="menu3.html" class="menu-card" style="background-image: url('garm va delneshin.jpg');">
       <h2>گرم و دلنشین</h2>
     </a>
-    <a href="menu4.html" class="menu-card" style="background-image: url('sweet.jpg');">
+    <a href="menu4.html" class="menu-card" style="background-image: url('delbarhaye shirin.jpg');">
       <h2>دلبرهای شیرین</h2>
     </a>
-    <a href="menu5.html" class="menu-card" style="background-image: url('healthy.jpg');">
+    <a href="menu5.html" class="menu-card" style="background-image: url('sabok va salem.jpg');">
       <h2>سبک و سالم</h2>
     </a>
-    <a href="menu6.html" class="menu-card" style="background-image: url('traditional.jpg');">
+    <a href="menu6.html" class="menu-card" style="background-image: url('sofre garm.jpg');">
       <h2>سفره‌ی گرم 365</h2>
     </a>
   </div>
