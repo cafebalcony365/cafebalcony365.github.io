@@ -45,27 +45,22 @@
       justify-content: center;
       border-bottom: 4px solid #ffd700;
     }
-   .banner h1 {
-  font-family: "IranNastaliq", cursive;
-  font-size: 2.5rem;
-  color: #ffd900;
-  background: none;
-  padding: 0;
-  border-radius: 0;
-  /* افکت حک با gradient و shadow */
-  color: #ffd900;
-  text-shadow:
-     2px 2px 4px rgba(0,0,0,0.6),
-    -2px -2px 4px rgba(0,0,0,0.6),
-     1px -1px 2px rgba(0,0,0,0.5),
-    -1px 1px 2px rgba(0,0,0,0.5);
-  /* افکت نور داخلی (حک) */
-  background: linear-gradient(to bottom, #ffd900 0%, #b8860b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-
+    .banner h1 {
+      font-family: "IranNastaliq", cursive;
+      font-size: 2.5rem;
+      color: #ffd900;
+      background: none;
+      padding: 0;
+      border-radius: 0;
+      text-shadow:
+         2px 2px 4px rgba(0,0,0,0.6),
+        -2px -2px 4px rgba(0,0,0,0.6),
+         1px -1px 2px rgba(0,0,0,0.5),
+        -1px 1px 2px rgba(0,0,0,0.5);
+      background: linear-gradient(to bottom, #ffd900 0%, #b8860b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
     /* جمله زیر بنر */
     header p {
@@ -78,54 +73,43 @@
       text-shadow: 0 0 10px rgba(0,0,0,0.4);
     }
 
-    /* کارت‌ها - ۲ در ۳ با موشن سینمایی و Glow */
+    /* کارت‌ها کوچک و زیر بنر */
     .menu-container {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 200px);
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
       padding: 20px;
       max-width: 1000px;
       margin: 20px auto;
     }
     .menu-card {
       position: relative;
-      border-radius: 16px;
+      height: 140px;
+      border-radius: 12px;
       overflow: hidden;
       background-size: cover;
       background-position: center;
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      border: 3px double #ffd700;
+      border: 2px double #ffd700;
       color: #fff;
       text-decoration: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
       opacity: 0;
-      transform: translateY(40px) scale(0.95);
-      transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.8s ease-in-out, box-shadow 0.8s ease-in-out;
+      transform: translateY(20px) scale(0.95);
+      transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.6s ease;
     }
     .menu-card.visible {
       opacity: 1;
       transform: translateY(0) scale(1);
-      box-shadow: 0 0 30px 6px rgba(255, 215, 0, 0.6);
-    }
-    .menu-card:hover { transform: translateY(-6px) scale(1.03); }
-    .menu-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.3);
-      transition: background 0.4s ease-in-out;
-    }
-    .menu-card.visible::before {
-      background: rgba(0,0,0,0.15);
+      box-shadow: 0 0 20px 4px rgba(255, 215, 0, 0.5);
     }
     .menu-card h2 {
       position: relative;
       font-family: "IranNastaliq", cursive;
-      font-size: 1.2rem;
-      margin-bottom: 12px;
+      font-size: 1rem;
+      margin-bottom: 8px;
       z-index: 1;
     }
 
@@ -139,8 +123,8 @@
       border-top: 2px solid rgba(255,215,0,0.15);
     }
     .footer-buttons a {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       border: 2px solid #ffd700;
       display: flex;
@@ -150,11 +134,7 @@
       transition: transform 0.25s ease;
     }
     .footer-buttons a:hover { transform: scale(1.1); }
-    .footer-buttons img {
-      width: 60%;
-      height: 60%;
-      object-fit: contain;
-    }
+    .footer-buttons img { width: 60%; height: 60%; object-fit: contain; }
 
     /* موبایل */
     @media (max-width: 600px) {
@@ -162,17 +142,11 @@
       .banner h1 { font-size: 1.6rem; padding: 6px 12px; }
       header p { font-size: 1.3rem; margin-top: 14px; }
 
-      .menu-container {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-        gap: 14px;
-        padding: 14px;
-      }
-      .menu-card { height: 140px; }
-      .menu-card h2 { font-size: 1rem; }
-
+      .menu-container { gap: 12px; padding: 12px; }
+      .menu-card { height: 120px; }
+      .menu-card h2 { font-size: 0.9rem; }
       .footer-buttons { gap: 8px; padding: 12px 10px 16px; }
-      .footer-buttons a { width: 36px; height: 36px; border-width: 2px; }
+      .footer-buttons a { width: 32px; height: 32px; }
     }
   </style>
 </head>
@@ -193,7 +167,7 @@
     <p>پناه حال خوب هر روز سال</p>
   </header>
 
-  <!-- کارت‌ها -->
+  <!-- کارت‌ها کوچک زیر بنر -->
   <div class="menu-container">
     <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');"><h2>صبح دلبرانه</h2></a>
     <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye khial.jpg');"><h2>خنکای خیال</h2></a>
@@ -214,20 +188,10 @@
   </div>
 
   <script>
-    // اسکرول موشن سینمایی با Glow و تأخیر
     const cards = document.querySelectorAll('.menu-card');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
           const card = entry.target;
-          const delay = Array.from(cards).indexOf(card) * 150; // تأخیر 150ms بین کارت‌ها
-          setTimeout(() => card.classList.add('visible'), delay);
-          observer.unobserve(card);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    cards.forEach(card => observer.observe(card));
-  </script>
-</body>
-</html>
+          const delay = Array.from(cards).indexOf(card) * 100;
+          setTimeout(() => card.classList.add('vis
