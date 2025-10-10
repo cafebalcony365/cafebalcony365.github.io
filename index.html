@@ -32,7 +32,6 @@
       padding: 10px 16px;
       border-bottom: 2px solid rgba(255,215,0,0.3);
     }
-    .navbar img.logo { height: 36px; }
 
     /* بنر */
     .banner {
@@ -45,27 +44,19 @@
       justify-content: center;
       border-bottom: 4px solid #ffd700;
     }
-   .banner h1 {
-  font-family: "IranNastaliq", cursive;
-  font-size: 2.5rem;
-  color: #ffd900;
-  background: none;
-  padding: 0;
-  border-radius: 0;
-  /* افکت حک با gradient و shadow */
-  color: #ffd900;
-  text-shadow:
-     2px 2px 4px rgba(0,0,0,0.6),
-    -2px -2px 4px rgba(0,0,0,0.6),
-     1px -1px 2px rgba(0,0,0,0.5),
-    -1px 1px 2px rgba(0,0,0,0.5);
-  /* افکت نور داخلی (حک) */
-  background: linear-gradient(to bottom, #ffd900 0%, #b8860b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-
+    .banner h1 {
+      font-family: "IranNastaliq", cursive;
+      font-size: 2.5rem;
+      color: #ffd900;
+      text-shadow:
+         2px 2px 4px rgba(0,0,0,0.6),
+        -2px -2px 4px rgba(0,0,0,0.6),
+         1px -1px 2px rgba(0,0,0,0.5),
+        -1px 1px 2px rgba(0,0,0,0.5);
+      background: linear-gradient(to bottom, #ffd900 0%, #b8860b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
     /* جمله زیر بنر */
     header p {
@@ -78,7 +69,7 @@
       text-shadow: 0 0 10px rgba(0,0,0,0.4);
     }
 
-    /* کارت‌ها - ۲ در ۳ با موشن سینمایی و Glow */
+    /* کارت‌ها */
     .menu-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -129,7 +120,7 @@
       z-index: 1;
     }
 
-    /* دکمه‌های پایین کوچک و کنار هم */
+    /* دکمه‌های پایین */
     .footer-buttons {
       display: flex;
       justify-content: center;
@@ -180,7 +171,7 @@
 <body>
   <!-- navbar -->
   <div class="navbar">
-    <img src="logo.png" class="logo" alt="Cafe 365">
+    <!-- لوگو حذف شد -->
   </div>
 
   <!-- بنر -->
@@ -220,7 +211,7 @@
       entries.forEach(entry => {
         if(entry.isIntersecting){
           const card = entry.target;
-          const delay = Array.from(cards).indexOf(card) * 150; // تأخیر 150ms بین کارت‌ها
+          const delay = Array.from(cards).indexOf(card) * 150; 
           setTimeout(() => card.classList.add('visible'), delay);
           observer.unobserve(card);
         }
