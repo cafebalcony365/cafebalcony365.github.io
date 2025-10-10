@@ -30,11 +30,11 @@
       justify-content: space-between;
       padding: 10px 16px;
       margin: 0;
-      border-bottom: none; /* حذف خط طلایی */
+      border-bottom: none;
     }
     .navbar img.logo { height: 36px; }
 
-    /* Ticker چسبیده به بالا با حرکت چپ به راست و fade */
+    /* Ticker چسبیده به بالا با حرکت چپ به راست و ظاهر شدن تدریجی */
     .ticker-wrapper {
       position: fixed;
       top: 0;
@@ -49,17 +49,18 @@
     .ticker {
       display: inline-block;
       white-space: nowrap;
-      direction: ltr; /* حرکت چپ به راست */
+      direction: ltr;
     }
 
     .ticker span {
       display: inline-block;
       font-family: "IranNastaliq", cursive;
-      color: #00ffff; /* فیروزه‌ای روشن */
+      color: #00ffff;
       font-size: 1.3rem;
       line-height: 40px;
       font-weight: bold;
       transform: translateX(-100%);
+      opacity: 0;
       animation: scroll 15s linear infinite;
     }
 
@@ -72,7 +73,7 @@
 
     /* Banner */
     .banner {
-      margin-top: 50px; /* جا برای Navbar و Ticker */
+      margin-top: 50px;
       width: 100%;
       height: 200px;
       background: url('b4.jpg') center/cover no-repeat;
