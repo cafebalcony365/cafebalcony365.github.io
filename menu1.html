@@ -33,7 +33,7 @@
     }
     .navbar img.logo { height: 36px; }
 
-    /* Ticker با ورود تدریجی */
+    /* Ticker زیبا با رنگ فیروزه‌ای و حرکت چپ به راست */
     .ticker-wrapper {
       position: fixed;
       top: 0;
@@ -52,17 +52,18 @@
 
     .ticker span {
       display: inline-block;
-      color: #ffd700;
-      font-size: 1.2rem;
+      font-family: "IranNastaliq", cursive;
+      color: #00ffff; /* فیروزه‌ای روشن */
+      font-size: 1.3rem;
       line-height: 40px;
       font-weight: bold;
-      transform: translateX(100%); /* ابتدا خارج از صفحه */
+      transform: translateX(-100%); /* ابتدا خارج از سمت چپ */
       animation: scroll 10s linear infinite;
     }
 
     @keyframes scroll {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
 
     /* Banner */
@@ -198,4 +199,10 @@
   <div class="footer-buttons">
     <a href="gallery.html"><img src="photo.png" alt="گالری"></a>
     <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="map.png" alt="نقشه"></a>
-    <a href="https://t.me/yourpage" target="_blank"><img src="telegram.png" alt="تلگرام"></a_
+    <a href="https://t.me/yourpage" target="_blank"><img src="telegram.png" alt="تلگرام"></a>
+    <a href="https://instagram.com/yourpage" target="_blank"><img src="instagram.png" alt="اینستاگرام"></a>
+    <a href="hafez.html"><img src="events.png" alt="رویداد"></a>
+    <a href="#"><img src="call.png" alt="تماس"></a>
+  </div>
+</body>
+</html>
