@@ -58,19 +58,18 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* کارت‌ها - فیت افقی در ۶ قسمت بدون اسکرول */
+    /* کارت‌ها - دو ردیف سه‌تایی */
     .menu-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: stretch;
-      width: 100%;
-      padding: 10px;
-      gap: 10px;
-      flex-wrap: nowrap;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 16px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 20px auto;
     }
+
     .menu-card {
-      flex: 1 1 calc(100% / 6);
-      aspect-ratio: 1 / 1;
       background-size: cover;
       background-position: center;
       border-radius: 16px;
@@ -83,11 +82,12 @@
       color: #fff;
       position: relative;
       transition: transform 0.3s ease;
+      aspect-ratio: 1 / 1;
     }
     .menu-card h2 {
       position: relative;
       font-family: "IranNastaliq", cursive;
-      font-size: 1rem;
+      font-size: 1.2rem;
       margin-bottom: 10px;
       z-index: 1;
       text-align: center;
@@ -129,16 +129,16 @@
       object-fit: contain;
     }
 
-    /* واکنش‌گرا */
-    @media (max-width: 900px) {
-      .menu-card { flex: 1 1 calc(100% / 6); }
-      .menu-card h2 { font-size: 0.9rem; }
-    }
-
+    /* موبایل */
     @media (max-width: 600px) {
-      .menu-container { gap: 6px; padding: 8px; }
-      .menu-card { flex: 1 1 calc(100% / 6); aspect-ratio: 1/1; }
-      .menu-card h2 { font-size: 0.7rem; }
+      .menu-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 12px;
+        padding: 12px;
+      }
+      .menu-card { aspect-ratio: 1 / 1; }
+      .menu-card h2 { font-size: 1rem; }
     }
   </style>
 </head>
@@ -154,7 +154,7 @@
     <h1>CAFE BALCONY 365</h1>
   </div>
 
-  <!-- کارت‌ها زیر بنر - ۶ قسمت افقی -->
+  <!-- کارت‌ها - دو ردیف سه‌تایی -->
   <div class="menu-container">
     <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');"><h2>صبح دلبرانه</h2></a>
     <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye khial.jpg');"><h2>خنکای خیال</h2></a>
