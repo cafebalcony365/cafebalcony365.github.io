@@ -25,7 +25,6 @@
       top: 0; left: 0; right: 0;
       z-index: 100;
       background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(6px);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -34,15 +33,15 @@
     }
     .navbar img.logo { height: 36px; }
 
-    /* متن متحرک پیشرفته (Ticker روان و بی‌وقفه) */
+    /* Ticker واضح و روان */
     .ticker-wrapper {
       position: fixed;
-      top: 0; /* چسبیده به سقف */
+      top: 0; 
       left: 0;
       width: 100%;
       height: 40px;
       overflow: hidden;
-      background: rgba(0,0,0,0.7);
+      background: #111; /* ساده و واضح */
       border-bottom: 2px solid #ffd700;
       z-index: 99;
     }
@@ -54,13 +53,13 @@
     }
     .ticker span {
       display: inline-block;
-      padding: 0 50px; /* فاصله بین تکرار متن */
-      color: #ffd700;
+      padding: 0 50px;
+      color: #ffd700; /* طلایی واضح */
       font-size: 1.2rem;
       line-height: 40px;
       font-weight: bold;
+      text-shadow: none;
     }
-    /* حرکت بی‌نهایت */
     @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -172,12 +171,12 @@
 </head>
 
 <body>
-  <!-- navbar -->
+  <!-- Navbar -->
   <div class="navbar">
     <img src="logo.png" class="logo" alt="Cafe 365">
   </div>
 
-  <!-- Ticker پیشرفته -->
+  <!-- Ticker واضح و روان -->
   <div class="ticker-wrapper">
     <div class="ticker">
       <span>پناه حال خوب هر روز سال</span>
