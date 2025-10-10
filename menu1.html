@@ -33,39 +33,41 @@
     }
     .navbar img.logo { height: 36px; }
 
-    /* Ticker اصلاح‌شده */
+    /* Ticker با ورود تدریجی */
     .ticker-wrapper {
       position: fixed;
-      top: 0; 
+      top: 0;
       left: 0;
       width: 100%;
       height: 40px;
       overflow: hidden;
       background: #111;
-      border-bottom: 2px solid #ffd700;
       z-index: 99;
     }
+
     .ticker {
       display: inline-block;
       white-space: nowrap;
     }
+
     .ticker span {
       display: inline-block;
-      padding-left: 100%; /* متن ابتدا خارج از صفحه */
       color: #ffd700;
       font-size: 1.2rem;
       line-height: 40px;
       font-weight: bold;
-      animation: scroll 10s linear infinite; /* سرعت حرکت */
+      transform: translateX(100%); /* ابتدا خارج از صفحه */
+      animation: scroll 10s linear infinite;
     }
+
     @keyframes scroll {
-      0% { transform: translateX(0); }
+      0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
 
     /* Banner */
     .banner {
-      margin-top: 60px; /* جا برای Ticker */
+      margin-top: 60px; /* جا برای Navbar و Ticker */
       width: 100%;
       height: 200px;
       background: url('b4.jpg') center/cover no-repeat;
@@ -170,7 +172,7 @@
     <img src="logo.png" class="logo" alt="Cafe 365">
   </div>
 
-  <!-- Ticker اصلاح‌شده -->
+  <!-- Ticker -->
   <div class="ticker-wrapper">
     <div class="ticker">
       <span>پناه حال خوب هر روز سال</span>
@@ -196,10 +198,4 @@
   <div class="footer-buttons">
     <a href="gallery.html"><img src="photo.png" alt="گالری"></a>
     <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="map.png" alt="نقشه"></a>
-    <a href="https://t.me/yourpage" target="_blank"><img src="telegram.png" alt="تلگرام"></a>
-    <a href="https://instagram.com/yourpage" target="_blank"><img src="instagram.png" alt="اینستاگرام"></a>
-    <a href="hafez.html"><img src="events.png" alt="رویداد"></a>
-    <a href="#"><img src="call.png" alt="تماس"></a>
-  </div>
-</body>
-</html>
+    <a href="https://t.me/yourpage" target="_blank"><img src="telegram.png" alt="تلگرام"></a_
