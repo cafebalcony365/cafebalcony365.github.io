@@ -32,6 +32,7 @@
       padding: 10px 16px;
       border-bottom: 2px solid rgba(255,215,0,0.3);
     }
+    .navbar img.logo { height: 36px; }
 
     /* بنر */
     .banner {
@@ -68,57 +69,49 @@
       text-shadow: 0 0 10px rgba(0,0,0,0.4);
     }
 
-    /* کارت‌ها - یک ردیف افقی بدون اسکرول */
+    /* کارت‌ها - فیت افقی در ۶ قسمت بدون اسکرول */
     .menu-container {
       display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      width: 100%;
+      padding: 10px;
       gap: 10px;
-      padding: 20px;
-      max-width: 100%;
-      margin: 20px auto;
+      flex-wrap: nowrap;
     }
     .menu-card {
-      flex: 1;       /* هر کارت یک ششم عرض */
-      min-width: 0;  /* جلوگیری از overflow */
-      height: 200px;
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
+      flex: 1 1 calc(100% / 6);
+      aspect-ratio: 1 / 1; /* مربع نگه‌می‌دارد */
       background-size: cover;
       background-position: center;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 3px double #ffd700;
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      border: 3px double #ffd700;
-      color: #fff;
       text-decoration: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      opacity: 0;
-      transform: translateY(40px) scale(0.95);
-      transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.8s ease-in-out, box-shadow 0.8s ease-in-out;
+      color: #fff;
+      position: relative;
+      transition: transform 0.3s ease;
     }
-    .menu-card.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      box-shadow: 0 0 30px 6px rgba(255, 215, 0, 0.6);
+    .menu-card h2 {
+      position: relative;
+      font-family: "IranNastaliq", cursive;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      z-index: 1;
+      text-align: center;
     }
-    .menu-card:hover { transform: translateY(-6px) scale(1.03); }
     .menu-card::before {
       content: "";
       position: absolute;
       inset: 0;
       background: rgba(0,0,0,0.3);
-      transition: background 0.4s ease-in-out;
+      transition: background 0.4s ease;
     }
-    .menu-card.visible::before {
-      background: rgba(0,0,0,0.15);
-    }
-    .menu-card h2 {
-      position: relative;
-      font-family: "IranNastaliq", cursive;
-      font-size: 1.2rem;
-      margin-bottom: 12px;
-      z-index: 1;
-    }
+    .menu-card:hover { transform: scale(1.05); }
+    .menu-card:hover::before { background: rgba(0,0,0,0.15); }
 
     /* دکمه‌های پایین */
     .footer-buttons {
@@ -147,16 +140,16 @@
       object-fit: contain;
     }
 
-    /* موبایل */
-    @media (max-width: 600px) {
-      .banner { height: 160px; margin-top: 54px; }
-      .banner h1 { font-size: 1.6rem; padding: 6px 12px; }
-      header p { font-size: 1.3rem; margin-top: 14px; }
+    /* واکنش‌گرا - کارت‌ها کوچک‌تر می‌شن ولی افقی می‌مونن */
+    @media (max-width: 900px) {
+      .menu-card { flex: 1 1 calc(100% / 6); }
+      .menu-card h2 { font-size: 0.9rem; }
+    }
 
-      .menu-container { flex-wrap: wrap; gap: 8px; padding: 14px; }
-      .menu-card { flex: 0 0 48%; height: 140px; }
-      .footer-buttons { gap: 8px; padding: 12px 10px 16px; }
-      .footer-buttons a { width: 36px; height: 36px; border-width: 2px; }
+    @media (max-width: 600px) {
+      .menu-container { gap: 6px; padding: 8px; }
+      .menu-card { flex: 1 1 calc(100% / 6); aspect-ratio: 1/1; }
+      .menu-card h2 { font-size: 0.7rem; }
     }
   </style>
 </head>
@@ -164,7 +157,7 @@
 <body>
   <!-- navbar -->
   <div class="navbar">
-    <!-- لوگو حذف شد -->
+    <img src="logo.png" class="logo" alt="Cafe 365">
   </div>
 
   <!-- بنر -->
@@ -177,7 +170,7 @@
     <p>پناه حال خوب هر روز سال</p>
   </header>
 
-  <!-- کارت‌ها -->
+  <!-- کارت‌ها زیر بنر - ۶ قسمت افقی -->
   <div class="menu-container">
     <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');"><h2>صبح دلبرانه</h2></a>
     <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye khial.jpg');"><h2>خنکای خیال</h2></a>
@@ -196,22 +189,5 @@
     <a href="hafez.html"><img src="events.png" alt="رویداد"></a>
     <a href="#"><img src="call.png" alt="تماس"></a>
   </div>
-
-  <script>
-    // اسکرول موشن سینمایی با Glow و تأخیر
-    const cards = document.querySelectorAll('.menu-card');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          const card = entry.target;
-          const delay = Array.from(cards).indexOf(card) * 150;
-          setTimeout(() => card.classList.add('visible'), delay);
-          observer.unobserve(card);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    cards.forEach(card => observer.observe(card));
-  </script>
 </body>
 </html>
