@@ -33,7 +33,7 @@
     }
     .navbar img.logo { height: 36px; }
 
-    /* Ticker زیبا با رنگ فیروزه‌ای و حرکت چپ به راست */
+    /* Ticker روان و پیوسته */
     .ticker-wrapper {
       position: fixed;
       top: 0;
@@ -48,6 +48,7 @@
     .ticker {
       display: inline-block;
       white-space: nowrap;
+      will-change: transform;
     }
 
     .ticker span {
@@ -57,13 +58,13 @@
       font-size: 1.3rem;
       line-height: 40px;
       font-weight: bold;
-      transform: translateX(-100%); /* ابتدا خارج از سمت چپ */
-      animation: scroll 10s linear infinite;
+      padding-left: 100%; /* متن ابتدا خارج از صفحه */
+      animation: scroll 15s linear infinite;
     }
 
     @keyframes scroll {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
 
     /* Banner */
