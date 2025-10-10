@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cafe 365</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=IranNastaliq&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <img src="images/logo.png" class="logo" alt="Cafe 365">
+</div>
+
+<div class="banner">
+  <h1>CAFE BALCONY 365</h1>
+</div>
+
+<header>
+  <p>پناه حال خوب هر روز سال</p>
+</header>
+
+<div class="menu-container">
+  <a href="menu1.html" class="menu-card" style="background-image:url('images/sobhe delbarane.jpg');"><h2>صبح دلبرانه</h2></a>
+  <a href="menu2.html" class="menu-card" style="background-image:url('images/khonakaye khial.jpg');"><h2>خنکای خیال</h2></a>
+  <a href="menu3.html" class="menu-card" style="background-image:url('images/garm va delneshin.jpg');"><h2>گرم و دلنشین</h2></a>
+  <a href="menu4.html" class="menu-card" style="background-image:url('images/delbarhaye shirin.jpg');"><h2>دلبرهای شیرین</h2></a>
+  <a href="menu5.html" class="menu-card" style="background-image:url('images/Sabok va salem.jpg');"><h2>سبک و سالم</h2></a>
+  <a href="menu6.html" class="menu-card" style="background-image:url('images/sofre garm.jpg');"><h2>سفره‌ی گرم 365</h2></a>
+</div>
+
+<div class="footer-buttons">
+  <a href="gallery.html"><img src="images/photo.png" alt="گالری"></a>
+  <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="images/map.png" alt="نقشه"></a>
+  <a href="https://t.me/yourpage" target="_blank"><img src="images/telegram.png" alt="تلگرام"></a>
+  <a href="https://instagram.com/yourpage" target="_blank"><img src="images/instagram.png" alt="اینستاگرام"></a>
+  <a href="hafez.html"><img src="images/events.png" alt="رویداد"></a>
+  <a href="#"><img src="images/call.png" alt="تماس"></a>
+</div>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>
