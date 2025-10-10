@@ -19,7 +19,6 @@
       color: #fff;
     }
 
-    /* Navbar */
     .navbar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -32,7 +31,6 @@
     }
     .navbar img.logo { height: 36px; }
 
-    /* Ticker */
     .ticker-wrapper {
       position: fixed;
       top: 0;
@@ -63,7 +61,6 @@
       100% { transform: translateX(-100%); }
     }
 
-    /* Banner */
     .banner {
       margin-top: 60px;
       width: 100%;
@@ -82,7 +79,6 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* Menu Cards */
     .menu-container {
       display: flex;
       justify-content: space-between;
@@ -112,7 +108,7 @@
     .menu-card h2 {
       position: relative;
       font-family: "IranNastaliq", cursive;
-      font-size: 1rem;
+      font-size: 0.8rem;
       margin-bottom: 10px;
       z-index: 1;
       text-align: center;
@@ -127,48 +123,68 @@
     .menu-card:hover { transform: scale(1.05); }
     .menu-card:hover::before { background: rgba(0,0,0,0.15); }
 
-    /* Drinks Menu */
-    .drinks-menu {
+    .breakfast-menu {
       max-width: 800px;
       margin: 40px auto;
       padding: 20px;
       background: rgba(0,0,0,0.6);
       border-radius: 12px;
     }
-    .drinks-menu h2 {
+    .breakfast-menu h2 {
       text-align: center;
       font-family: "IranNastaliq", cursive;
       font-size: 1.8rem;
       color: #00ffff;
       margin-bottom: 20px;
     }
-    .drink-item {
+    .breakfast-item {
       margin-bottom: 15px;
       padding-bottom: 10px;
       border-bottom: 1px solid rgba(255,255,255,0.2);
     }
-    .drink-item span.name {
+    .breakfast-item span.name {
       color: #ffd700;
       font-family: "IranNastaliq", cursive;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
-    .drink-item span.price {
+    .breakfast-item span.price {
       float: left;
       color: #00ffff;
       font-weight: bold;
     }
-    .drink-item p {
+    .breakfast-item p {
       margin: 2px 0 0;
       font-size: 0.9rem;
       color: #fff;
       clear: both;
     }
-    .drink-item::after { content: ""; display: block; clear: both; }
+    .breakfast-item::after { content: ""; display: block; clear: both; }
+
+    .footer-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 10px 20px;
+      background: rgba(0,0,0,0.8);
+      border-top: 2px solid rgba(255,215,0,0.15);
+    }
+    .footer-buttons a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #ffd700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      transition: transform 0.25s ease;
+    }
+    .footer-buttons a:hover { transform: scale(1.1); }
+    .footer-buttons img { width: 60%; height: 60%; object-fit: contain; }
   </style>
 </head>
 
 <body>
-
   <div class="navbar">
     <img src="logo.png" class="logo" alt="Cafe 365">
   </div>
@@ -192,91 +208,88 @@
     <a href="menu6.html" class="menu-card" style="background-image: url('sofre garm.jpg');"><h2>سفره‌ی گرم 365</h2></a>
   </div>
 
-  <!-- Drinks Menu -->
-  <div class="drinks-menu">
+  <!-- منوی نوشیدنی های گرم و دلنشین -->
+  <div class="breakfast-menu">
     <h2>نوشیدنی های گرم و دلنشین</h2>
 
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">اسپرسو</span>
       <span class="price">89.000</span>
     </div>
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">لاته</span>
       <span class="price">126.000</span>
     </div>
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">کاپوچینو</span>
       <span class="price">126.000</span>
     </div>
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">آمریکانو</span>
       <span class="price">94.000</span>
     </div>
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">موکا</span>
       <span class="price">133.000</span>
     </div>
 
-    <h2>نسخه های مادر بزرگ</h2>
-
-    <div class="drink-item">
+    <h2>نسخه‌های مادر بزرگ</h2>
+    <div class="breakfast-item">
       <span class="name">دمنوش هپی هربال</span>
       <span class="price">98.000</span>
       <p>زعفران، گل سرخ، دارچین، برگ به لیمو</p>
     </div>
-    <div class="drink-item">
-      <span class="name">دمنوش فرح بخش</span>
+    <div class="breakfast-item">
+      <span class="name">دمنوش فرح‌بخش</span>
       <span class="price">98.000</span>
       <p>گل سرخ، به لیمو، دارچین، گل گاوزبان</p>
     </div>
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">انواع دمنوش</span>
       <span class="price">98.000</span>
       <p>گل گاوزبان، آویشن، به لیمو، بابونه، زعفران، لوندر، چای سیاه</p>
     </div>
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">لیمو خشک</span>
       <span class="price">98.000</span>
     </div>
 
     <h2>چای کنار پنجره</h2>
-
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">چای سیاه دمی</span>
       <span class="price">75.000</span>
     </div>
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">چای زعفران</span>
       <span class="price">105.000</span>
     </div>
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">چای ماسالا</span>
       <span class="price">118.000</span>
     </div>
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">چای کرک</span>
       <span class="price">140.000</span>
     </div>
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">چای مراکشی</span>
       <span class="price">140.000</span>
     </div>
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">انواع چایی</span>
       <span class="price">105.000</span>
       <p>دارچین، زنجبیل</p>
     </div>
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">هات چاکلت</span>
       <span class="price">122.000</span>
     </div>
-    <div class="drink-item">
+    <div class="breakfast-item">
       <span class="name">پینک چاکلت</span>
       <span class="price">128.000</span>
     </div>
   </div>
 
-  <!-- Footer Buttons -->
   <div class="footer-buttons">
     <a href="gallery.html"><img src="photo.png" alt="گالری"></a>
     <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="map.png" alt="نقشه"></a>
@@ -285,6 +298,5 @@
     <a href="hafez.html"><img src="events.png" alt="رویداد"></a>
     <a href="#"><img src="call.png" alt="تماس"></a>
   </div>
-
 </body>
 </html>
