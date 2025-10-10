@@ -19,7 +19,7 @@
       color: #fff;
     }
 
-    /* Navbar بدون خط پایین و چسبیده به بالا */
+    /* Navbar */
     .navbar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -34,7 +34,7 @@
     }
     .navbar img.logo { height: 36px; }
 
-    /* Ticker چسبیده به بالا با حرکت چپ به راست و ظاهر شدن تدریجی */
+    /* Ticker */
     .ticker-wrapper {
       position: fixed;
       top: 0;
@@ -45,13 +45,11 @@
       background: #111;
       z-index: 99;
     }
-
     .ticker {
       display: inline-block;
       white-space: nowrap;
       direction: ltr;
     }
-
     .ticker span {
       display: inline-block;
       font-family: "IranNastaliq", cursive;
@@ -63,7 +61,6 @@
       opacity: 0;
       animation: scroll 15s linear infinite;
     }
-
     @keyframes scroll {
       0% { transform: translateX(-100%); opacity: 0; }
       10% { opacity: 1; }
@@ -140,27 +137,36 @@
     .menu-card:hover { transform: scale(1.05); }
     .menu-card:hover::before { background: rgba(0,0,0,0.15); }
 
-    /* Breakfast Menu ساده */
+    /* Breakfast Menu */
     .breakfast-menu {
-      max-width: 800px;
-      margin: 40px auto;
+      max-width: 1000px;
+      margin: 30px auto;
       padding: 20px;
+      border-radius: 16px;
       background: rgba(0,0,0,0.6);
-      border-radius: 12px;
-      font-family:'IranNastaliq', cursive;
-      color: #fff;
-    }
-    .breakfast-menu h2 {
-      text-align:center;
-      color:#00ffff;
-      margin-bottom:20px;
+      font-family: "Vazirmatn", sans-serif;
     }
     .breakfast-menu h3 {
-      color:#00ffff;
-      margin:10px 0 5px 0;
+      color: #ffd700;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 1.3rem;
+      border-bottom: 1px solid #00ffff;
+      display: inline-block;
+      padding-bottom: 3px;
+    }
+    .breakfast-menu .section-title {
+      color: #00ffff;
+      margin-top: 15px;
+      font-weight: bold;
     }
     .breakfast-menu p {
-      margin: 3px 0;
+      margin: 4px 0;
+      line-height: 1.5;
+    }
+    .breakfast-menu .item {
+      display: flex;
+      justify-content: space-between;
     }
 
     /* Footer Buttons */
@@ -186,7 +192,6 @@
     .footer-buttons a:hover { transform: scale(1.1); }
     .footer-buttons img { width: 60%; height: 60%; object-fit: contain; }
 
-    /* Responsive */
     @media (max-width: 900px) { .menu-card h2 { font-size: 0.9rem; } }
     @media (max-width: 600px) { .menu-card h2 { font-size: 0.7rem; } }
   </style>
@@ -220,63 +225,47 @@
     <a href="menu6.html" class="menu-card" style="background-image: url('sofre garm.jpg');"><h2>سفره‌ی گرم 365</h2></a>
   </div>
 
-  <!-- Breakfast Menu ساده -->
+  <!-- Breakfast Menu -->
   <div class="breakfast-menu">
-    <h2>منوی صبحانه</h2>
-    <p>صبح شیرین</p>
-    <p>وافل ----------------------- 225.000</p>
-    <p>پنکیک ---------------------- 225.000</p>
-    <p>کروسان ---------------------- 216.000</p>
+    <h3>صبحانه‌ها</h3>
 
-    <p>صبح دلبرانه</p>
-    <h3>-- املت‌ها --</h3>
-    <p>املت گوشت ---------------------- 258.000</p>
+    <div class="section-title">صبح شیرین</div>
+    <p class="item"><span>وافل</span><span>225.000</span></p>
+    <p class="item"><span>پنکیک</span><span>225.000</span></p>
+    <p class="item"><span>کروسان</span><span>216.000</span></p>
+
+    <div class="section-title">صبح دلبرانه</div>
+    <p class="item"><span>املت گوشت</span><span>258.000</span></p>
     <p>(گوشت چرخی، سوسیس، تخم مرغ، نان تازه کنجدی)</p>
     <p>ترکیب انرژی صبحگاهی امضای 365</p>
 
-    <p>املت ایرانی ---------------------- 143.000</p>
+    <p class="item"><span>املت ایرانی</span><span>143.000</span></p>
     <p>(گوجه تازه، 2 عدد تخم مرغ همزده با کلاسیک ترین طبخ ایرانی)</p>
 
-    <p>املت فلفلی ---------------------- 235.000</p>
-    <p>(پپرونی، تخم مرغ، فلفل سبز، پنیر پیتزا خوشمزه برای صبح های انرژی)</p>
+    <p class="item"><span>املت فلفلی</span><span>235.000</span></p>
+    <p>(پپرونی، تخم مرغ، فلفل سبز، پنیر پیتزا)</p>
 
-    <p>املت اسفناج ---------------------- 235.000</p>
+    <p class="item"><span>املت اسفناج</span><span>235.000</span></p>
     <p>(اسفناج تازه، گوجه فرنگی، ژامبون پنیر صبحانه، تخم مرغ)</p>
 
-    <h3>-- پنیرانه و اسکرامبل --</h3>
-    <p>پنیر برشته ------------------- 143.000</p>
+    <div class="section-title">پنیرانه و اسکرامبل</div>
+    <p class="item"><span>پنیر برشته</span><span>143.000</span></p>
     <p>(پنیر خامه ای، پنیر دانمارکی، پنیر پیتزا، پنیر فتا، تخم مرغ، شوید)</p>
 
-    <h3>-- صبحانه های فصل --</h3>
-    <p>بشقاب انگلیسی --------------- 425.000</p>
+    <div class="section-title">صبحانه های فصل</div>
+    <p class="item"><span>بشقاب انگلیسی</span><span>425.000</span></p>
     <p>(لوبیا گرم، تخم مرغ، گوجه کبابی، املت قارچ، تست ژامبون)</p>
     <p>یک شروع کامل برای روزی پر انرژی</p>
 
-    <p>بشقاب ایرانی --------------- 242.000</p>
+    <p class="item"><span>بشقاب ایرانی</span><span>242.000</span></p>
     <p>(پنیر، کره، مربا، خیار، گوجه فرنگی، نیمرو)</p>
     <p>طعم اصیل و دلنشین</p>
 
-    <p>کروسان ------------------ 212.000</p>
+    <p class="item"><span>کروسان</span><span>212.000</span></p>
     <p>(نیمرو، ژامبون، کاهو، سس مخصوص)</p>
 
-    <p>تخم مرغ خرما --------------- 215.000</p>
+    <p class="item"><span>تخم مرغ خرما</span><span>215.000</span></p>
     <p>(تخم مرغ، خرما، گردو، سیاه دانه، کنجد و ادویه مخصوص)</p>
 
-    <p>سوسیس تخم مرغ ------------- 179.000</p>
-    <p>(سوسیس، تخم مرغ، ادویه مخصوص)</p>
-
-    <p>نیمرو ---------------------- 111.000</p>
-    <p>(3 عدد تخم مرغ)</p>
-  </div>
-
-  <!-- Footer Buttons -->
-  <div class="footer-buttons">
-    <a href="gallery.html"><img src="photo.png" alt="گالری"></a>
-    <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="map.png" alt="نقشه"></a>
-    <a href="https://t.me/yourpage" target="_blank"><img src="telegram.png" alt="تلگرام"></a>
-    <a href="https://instagram.com/yourpage" target="_blank"><img src="instagram.png" alt="اینستاگرام"></a>
-    <a href="hafez.html"><img src="events.png" alt="رویداد"></a>
-    <a href="#"><img src="call.png" alt="تماس"></a>
-  </div>
-</body>
-</html>
+    <p class="item"><span>سوسیس تخم مرغ</span><span>179.000</span></p>
+    <p>(سوسیس، تخم مرغ، اد
