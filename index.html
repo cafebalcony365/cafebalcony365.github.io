@@ -19,26 +19,56 @@
       font-family: "Vazirmatn", Tahoma, sans-serif;
       background: linear-gradient(135deg, #006666 20%, #1e1e1e 100%);
       color: #fff;
-      display: flex;
-      flex-direction: column;
       min-height: 100vh;
       overflow-x: hidden;
     }
 
-    /* انیمیشن ورود کارت‌ها */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* 🔸 نوار شناور بالا */
+    .navbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid rgba(255, 215, 0, 0.4);
+      transition: background 0.4s ease, padding 0.3s ease;
     }
 
-    /* بنر بالا */
+    .navbar.scrolled {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 6px 20px;
+    }
+
+    .navbar img.logo {
+      height: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar.scrolled img.logo {
+      transform: scale(0.85);
+    }
+
+    .navbar a {
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 8px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #fff;
+    }
+
+    /* بنر */
     .banner {
+      margin-top: 70px; /* فاصله از navbar */
       width: 100%;
       height: 230px;
       background: url('b4.jpg') center/cover no-repeat;
@@ -68,9 +98,10 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+      text-align: center;
     }
 
-    /* کارت‌های منو */
+    /* کارت‌ها */
     .menu-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -95,17 +126,14 @@
       background-position: center;
       border: 4px double #ffd700;
       opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 0.8s ease forwards;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    /* تاخیر انیمیشن برای هر کارت */
-    .menu-card:nth-child(1) { animation-delay: 0.2s; }
-    .menu-card:nth-child(2) { animation-delay: 0.4s; }
-    .menu-card:nth-child(3) { animation-delay: 0.6s; }
-    .menu-card:nth-child(4) { animation-delay: 0.8s; }
-    .menu-card:nth-child(5) { animation-delay: 1s; }
-    .menu-card:nth-child(6) { animation-delay: 1.2s; }
+    .menu-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     .menu-card::before {
       content: "";
@@ -135,6 +163,20 @@
 
     /* موبایل */
     @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 8px;
+      }
+
+      .navbar.scrolled {
+        padding: 5px;
+      }
+
+      .navbar img.logo {
+        height: 35px;
+      }
+
       .banner {
         height: 180px;
       }
@@ -170,7 +212,7 @@
       }
     }
 
-    /* نوار دکمه‌های پایین */
+    /* دکمه‌های پایین */
     .footer-buttons {
       display: flex;
       justify-content: center;
@@ -207,6 +249,18 @@
   </style>
 </head>
 <body>
+  <!-- 🔹 نوار بالا -->
+  <div class="navbar">
+    <img src="logo.png" alt="Cafe 365" class="logo" />
+    <div>
+      <a href="#">خانه</a>
+      <a href="#menu">منو</a>
+      <a href="gallery.html">گالری</a>
+      <a href="hafez.html">رویدادها</a>
+      <a href="#contact">تماس</a>
+    </div>
+  </div>
+
   <!-- بنر -->
   <div class="banner">
     <h1>CAFE BALCONY 365</h1>
@@ -216,8 +270,8 @@
     <p>پناه حال خوب هر روز سال</p>
   </header>
 
-  <!-- کارت‌های منو -->
-  <div class="menu-container">
+  <!-- کارت‌ها -->
+  <div id="menu" class="menu-container">
     <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');">
       <h2>صبح دلبرانه</h2>
     </a>
@@ -238,13 +292,32 @@
     </a>
   </div>
 
-  <!-- دکمه‌های پایین -->
-  <div class="footer-buttons">
+  <!-- دکمه‌ها -->
+  <div id="contact" class="footer-buttons">
     <a href="https://instagram.com/yourpage" target="_blank"><img src="instagram.png" alt="اینستاگرام"></a>
     <a href="https://t.me/yourpage" target="_blank"><img src="telegram.png" alt="تلگرام"></a>
     <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="map.png" alt="موقعیت"></a>
     <a href="gallery.html"><img src="photo.png" alt="گالری"></a>
     <a href="hafez.html"><img src="events.png" alt="همایش"></a>
   </div>
+
+  <!-- اسکریپت‌ها -->
+  <script>
+    // افکت ظاهر کارت‌ها هنگام اسکرول
+    const cards = document.querySelectorAll('.menu-card');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    cards.forEach(card => observer.observe(card));
+
+    // تغییر استایل navbar هنگام اسکرول
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+    });
+  </script>
 </body>
 </html>
