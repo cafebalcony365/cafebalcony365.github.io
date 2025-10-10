@@ -3,42 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cafe 365</title>
+<title>منوی صبحانه - Cafe 365</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=IranNastaliq&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"Vazirmatn", sans-serif; background: linear-gradient(135deg,#006666 20%,#1e1e1e 100%); color:#fff; padding:20px; }
+
+  h1, h2 { font-family:"IranNastaliq", cursive; margin-bottom:12px; }
+
+  /* کارت‌ها ردیفی و کوچک */
+  .card-row {
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    padding-bottom:16px;
+    margin-bottom:20px;
+  }
+  .menu-card {
+    flex:0 0 auto;
+    width:120px;
+    height:100px;
+    border-radius:12px;
+    overflow:hidden;
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    color:#fff;
+    font-family:"IranNastaliq", cursive;
+    font-size:0.9rem;
+    text-align:center;
+    border:2px solid #ffd700;
+    cursor:pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position:relative;
+  }
+  .menu-card::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.25);
+  }
+  .menu-card span { position:relative; z-index:1; }
+  .menu-card:hover { transform:translateY(-4px) scale(1.05); box-shadow:0 0 20px 5px #ffd700; }
+
+  /* کادر منو */
+  .menu-box {
+    background: rgba(0,0,0,0.6);
+    border:2px solid #ffd700;
+    border-radius:12px;
+    padding:20px;
+    max-width:800px;
+    margin:0 auto;
+    font-size:1rem;
+    line-height:1.6;
+  }
+
+  /* scrollbar کارت‌ها */
+  .card-row::-webkit-scrollbar { height:6px; }
+  .card-row::-webkit-scrollbar-thumb { background:#ffd700; border-radius:3px; }
+
+  /* موبایل */
+  @media(max-width:600px){
+    .menu-card{width:90px; height:80px;}
+    .menu-box{font-size:0.9rem;}
+  }
+</style>
 </head>
 <body>
 
-<div class="navbar">
-  <img src="images/logo.png" class="logo" alt="Cafe 365">
+<h1>منوی صبحانه - Cafe 365</h1>
+
+<!-- کارت‌ها کوچک و افقی -->
+<div class="card-row">
+  <div class="menu-card" style="background-image:url('images/sobhe delbarane.jpg');"><span>صبح دلبرانه</span></div>
+  <div class="menu-card" style="background-image:url('images/khonakaye khial.jpg');"><span>خنکای خیال</span></div>
+  <div class="menu-card" style="background-image:url('images/garm va delneshin.jpg');"><span>گرم و دلنشین</span></div>
+  <div class="menu-card" style="background-image:url('images/delbarhaye shirin.jpg');"><span>دلبرهای شیرین</span></div>
 </div>
 
-<div class="banner">
-  <h1>CAFE BALCONY 365</h1>
+<!-- متن منوی صبحانه -->
+<div class="menu-box">
+  <h2>صبحانه</h2>
+  <p>
+    اینجا متن منوی صبحانه را اضافه کن.  
+    می‌توانی آیتم‌ها را به همراه قیمت و توضیحات قرار دهی، مثلا:  
+  </p>
+  <ul>
+    <li>املت با سبزیجات - ۲۵۰۰۰ تومان</li>
+    <li>پنکیک با عسل و کره - ۳۰۰۰۰ تومان</li>
+    <li>سینی صبحانه ویژه - ۴۰۰۰۰ تومان</li>
+  </ul>
 </div>
 
-<header>
-  <p>پناه حال خوب هر روز سال</p>
-</header>
-
-<div class="menu-container">
-  <a href="menu1.html" class="menu-card" style="background-image:url('images/sobhe delbarane.jpg');"><h2>صبح دلبرانه</h2></a>
-  <a href="menu2.html" class="menu-card" style="background-image:url('images/khonakaye khial.jpg');"><h2>خنکای خیال</h2></a>
-  <a href="menu3.html" class="menu-card" style="background-image:url('images/garm va delneshin.jpg');"><h2>گرم و دلنشین</h2></a>
-  <a href="menu4.html" class="menu-card" style="background-image:url('images/delbarhaye shirin.jpg');"><h2>دلبرهای شیرین</h2></a>
-  <a href="menu5.html" class="menu-card" style="background-image:url('images/Sabok va salem.jpg');"><h2>سبک و سالم</h2></a>
-  <a href="menu6.html" class="menu-card" style="background-image:url('images/sofre garm.jpg');"><h2>سفره‌ی گرم 365</h2></a>
-</div>
-
-<div class="footer-buttons">
-  <a href="gallery.html"><img src="images/photo.png" alt="گالری"></a>
-  <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="images/map.png" alt="نقشه"></a>
-  <a href="https://t.me/yourpage" target="_blank"><img src="images/telegram.png" alt="تلگرام"></a>
-  <a href="https://instagram.com/yourpage" target="_blank"><img src="images/instagram.png" alt="اینستاگرام"></a>
-  <a href="hafez.html"><img src="images/events.png" alt="رویداد"></a>
-  <a href="#"><img src="images/call.png" alt="تماس"></a>
-</div>
-
-<script src="js/script.js" defer></script>
 </body>
 </html>
