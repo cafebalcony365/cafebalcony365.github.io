@@ -58,72 +58,44 @@
         -1px 1px 2px rgba(0,0,0,0.5);
     }
 
-    /* کارت‌ها — کوچک و بلافاصله زیر بنر */
+    /* کارت‌ها — هم اندازه نوار قبلی (۴۰px ارتفاع) ولی متناسب */
     .menu-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 150px);
       gap: 16px;
       padding: 20px;
       max-width: 900px;
-      margin: 0 auto 20px; /* بالاش صفر تا بچسبه زیر بنر */
+      margin: 0 auto 40px;
     }
     .menu-card {
+      height: 60px; /* ← تقریباً اندازه نوار پایین بود، تنظیم شد */
       position: relative;
       border-radius: 12px;
       overflow: hidden;
       background-size: cover;
       background-position: center;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
       border: 2px double #ffd700;
       color: #fff;
       text-decoration: none;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
       opacity: 0;
-      transform: translateY(30px) scale(0.95);
-      transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.8s ease-in-out;
+      transform: translateY(20px) scale(0.95);
+      transition: transform 0.8s ease, opacity 0.8s ease;
     }
     .menu-card.visible {
       opacity: 1;
       transform: translateY(0) scale(1);
-      box-shadow: 0 0 20px 4px rgba(255, 215, 0, 0.5);
+      box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.5);
     }
-    .menu-card:hover { transform: translateY(-5px) scale(1.03); }
+    .menu-card:hover { transform: translateY(-3px) scale(1.03); }
     .menu-card h2 {
-      position: relative;
       font-family: "IranNastaliq", cursive;
       font-size: 1rem;
-      margin-bottom: 8px;
+      margin: 0;
       z-index: 1;
-    }
-
-    /* دکمه‌های پایین */
-    .footer-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      padding: 16px 10px 20px;
-      background: rgba(0,0,0,0.8);
-      border-top: 2px solid rgba(255,215,0,0.15);
-    }
-    .footer-buttons a {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 2px solid #ffd700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #111;
-      transition: transform 0.25s ease;
-    }
-    .footer-buttons a:hover { transform: scale(1.1); }
-    .footer-buttons img {
-      width: 60%;
-      height: 60%;
-      object-fit: contain;
     }
 
     /* موبایل */
@@ -135,7 +107,7 @@
         gap: 12px;
         padding: 14px;
       }
-      .menu-card { height: 120px; }
+      .menu-card { height: 50px; }
       .menu-card h2 { font-size: 0.9rem; }
     }
   </style>
@@ -150,7 +122,7 @@
     <h1>CAFE BALCONY 365</h1>
   </div>
 
-  <!-- کارت‌ها جای جمله -->
+  <!-- کارت‌ها کوچک و به اندازه نوار مشکی -->
   <div class="menu-container">
     <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');"><h2>صبح دلبرانه</h2></a>
     <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye khial.jpg');"><h2>خنکای خیال</h2></a>
@@ -160,22 +132,14 @@
     <a href="menu6.html" class="menu-card" style="background-image: url('sofre garm.jpg');"><h2>سفره‌ی گرم 365</h2></a>
   </div>
 
-  <div class="footer-buttons">
-    <a href="gallery.html"><img src="photo.png" alt="گالری"></a>
-    <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="map.png" alt="نقشه"></a>
-    <a href="https://t.me/yourpage" target="_blank"><img src="telegram.png" alt="تلگرام"></a>
-    <a href="https://instagram.com/yourpage" target="_blank"><img src="instagram.png" alt="اینستاگرام"></a>
-    <a href="hafez.html"><img src="events.png" alt="رویداد"></a>
-    <a href="#"><img src="call.png" alt="تماس"></a>
-  </div>
-
   <script>
+    // افکت ظاهر شدن کارت‌ها
     const cards = document.querySelectorAll('.menu-card');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
           const card = entry.target;
-          const delay = Array.from(cards).indexOf(card) * 150;
+          const delay = Array.from(cards).indexOf(card) * 100;
           setTimeout(() => card.classList.add('visible'), delay);
           observer.unobserve(card);
         }
