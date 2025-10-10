@@ -1,137 +1,114 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cafe 365</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      min-height: 100vh;
-      font-family: Tahoma, sans-serif;
-      background: linear-gradient(135deg, #2a003f, #0d0d0f 80%);
-      color: #fff;
-      text-align: center;
-    }
+/* تنظیم box-sizing جهانی */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    /* بنر بالا */
-    .banner {
-      width: 100%;
-      height: 200px;
-      background: url('banner.jpg') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .banner h1 {
-      font-size: 2rem;
-      color: #ffd700;
-      text-shadow: 0 0 15px rgba(255,215,0,0.9);
-      background: rgba(0,0,0,0.5);
-      padding: 10px 20px;
-      border-radius: 12px;
-    }
+/* بدنه صفحه */
+html, body {
+  height: 100%;
+  font-family: Tahoma, sans-serif;
+  background: linear-gradient(135deg, #2a003f, #0d0d0f 80%);
+  color: #fff;
+  text-align: center;
+}
 
-    header p {
-      margin: 15px 0;
-      font-size: 1rem;
-      color: #ff77aa;
-      font-weight: bold;
-    }
+/* بنر بالا */
+.banner {
+  width: 100%;
+  height: 200px;
+  background: url('banner.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banner h1 {
+  font-size: 2rem;
+  color: #ffd700;
+  text-shadow: 0 0 15px rgba(255,215,0,0.9);
+  background: rgba(0,0,0,0.5);
+  padding: 10px 20px;
+  border-radius: 12px;
+}
 
-    /* کارت‌های منو */
-    .menu-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 15px;
-      max-width: 1000px;
-      margin: 20px auto;
-      padding: 0 10px 40px;
-    }
-    .menu-card {
-      position: relative;
-      border-radius: 15px;
-      overflow: hidden;
-      cursor: pointer;
-      height: 160px;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      background-size: cover;
-      background-position: center;
-      text-decoration: none;
-      border: 3px solid #ffd700;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .menu-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.35);
-    }
-    .menu-card h2 {
-      position: relative;
-      margin: 0 0 12px;
-      font-size: 1.1rem;
-      color: #fff;
-      text-shadow: 0 0 10px rgba(0,0,0,0.8);
-      z-index: 2;
-    }
-    .menu-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(255,0,150,0.4);
-    }
+header p {
+  margin: 15px 0;
+  font-size: 1rem;
+  color: #ff77aa;
+  font-weight: bold;
+}
 
-    /* موبایل */
-    @media (max-width: 600px) {
-      .banner {
-        height: 150px; /* کوچیک‌تر */
-      }
-      .banner h1 {
-        font-size: 1.5rem;
-      }
-      .menu-container {
-        grid-template-columns: 1fr 1fr; /* دوتایی بشن توی موبایل */
-        gap: 10px;
-      }
-      .menu-card {
-        height: 120px;
-      }
-      .menu-card h2 {
-        font-size: 0.9rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="banner">
-    <h1>Cafe 365</h1>
-  </div>
-  <header>
-    <p>پناه حال خوب هر روز سال</p>
-  </header>
+/* کارت‌های منو */
+.menu-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 ستون روی دسکتاپ */
+  gap: 15px;
+  width: 95%; /* عرض نسبی برای جلوگیری از overflow */
+  max-width: 1000px;
+  margin: 20px auto 40px;
+}
 
-  <div class="menu-container">
-    <a href="menu1.html" class="menu-card" style="background-image: url('sobhe-delbarane.jpg');">
-      <h2>صبح دلبرانه</h2>
-    </a>
-    <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye-khial.jpg');">
-      <h2>خنکای خیال</h2>
-    </a>
-    <a href="menu3.html" class="menu-card" style="background-image: url('garm-va-delneshin.jpg');">
-      <h2>گرم و دلنشین</h2>
-    </a>
-    <a href="menu4.html" class="menu-card" style="background-image: url('delbarhaye-shirin.jpg');">
-      <h2>دلبرهای شیرین</h2>
-    </a>
-    <a href="menu5.html" class="menu-card" style="background-image: url('sabok-va-salem.jpg');">
-      <h2>سبک و سالم</h2>
-    </a>
-    <a href="menu6.html" class="menu-card" style="background-image: url('sofre-garm.jpg');">
-      <h2>سفره‌ی گرم 365</h2>
-    </a>
-  </div>
-</body>
-</html>
+.menu-card {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  height: 160px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+  border: 3px solid #ffd700;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+}
+
+.menu-card h2 {
+  position: relative;
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8);
+  z-index: 2;
+}
+
+.menu-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(255,0,150,0.4);
+}
+
+/* موبایل */
+@media (max-width: 900px) {
+  .menu-container {
+    grid-template-columns: repeat(2, 1fr); /* دو ستونه */
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .banner {
+    height: 150px;
+  }
+  .banner h1 {
+    font-size: 1.5rem;
+  }
+  .menu-container {
+    grid-template-columns: 1fr; /* تک ستونه */
+    gap: 10px;
+  }
+  .menu-card {
+    height: 120px;
+  }
+  .menu-card h2 {
+    font-size: 0.9rem;
+  }
+}
