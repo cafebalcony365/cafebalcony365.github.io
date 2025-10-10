@@ -3,167 +3,231 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cafe 365 - منو صبحانه</title>
+  <title>Cafe 365</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=IranNastaliq&display=swap" rel="stylesheet">
 
   <style>
-    body {
+    * { box-sizing: border-box; }
+    html, body {
       margin: 0;
       padding: 0;
+      max-width: 100%;
+      overflow-x: hidden;
       font-family: "Vazirmatn", sans-serif;
       background: linear-gradient(135deg, #006666 20%, #1e1e1e 100%);
       color: #fff;
     }
 
-    .menu-wrapper {
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+    }
+    .navbar img.logo { height: 36px; }
+
+    /* Ticker */
+    .ticker-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      overflow: hidden;
+      background: #111;
+      z-index: 99;
+    }
+    .ticker {
+      display: inline-block;
+      white-space: nowrap;
+      will-change: transform;
+    }
+    .ticker span {
+      display: inline-block;
+      font-family: "IranNastaliq", cursive;
+      color: #00ffff;
+      font-size: 1.3rem;
+      line-height: 40px;
+      font-weight: bold;
+      padding-left: 100%;
+      animation: scroll 15s linear infinite;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Banner */
+    .banner {
+      margin-top: 60px;
+      width: 100%;
+      height: 200px;
+      background: url('b4.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .banner h1 {
+      font-family: "IranNastaliq", cursive;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+      background: linear-gradient(to bottom, #ffd900 0%, #b8860b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Menu Cards */
+    .menu-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      width: 100%;
+      padding: 10px;
+      gap: 10px;
+      flex-wrap: nowrap;
+      margin-top: 10px;
+    }
+    .menu-card {
+      flex: 1 1 calc(100% / 6);
+      aspect-ratio: 1 / 1;
+      background-size: cover;
+      background-position: center;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 3px double #ffd700;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .menu-card h2 {
+      position: relative;
+      font-family: "IranNastaliq", cursive;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      z-index: 1;
+      text-align: center;
+    }
+    .menu-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.4s ease;
+    }
+    .menu-card:hover { transform: scale(1.05); }
+    .menu-card:hover::before { background: rgba(0,0,0,0.15); }
+
+    /* Menu Breakfast */
+    .breakfast-menu {
       max-width: 800px;
-      margin: 100px auto 40px; /* فاصله از بالا */
+      margin: 40px auto;
       padding: 20px;
       background: rgba(0,0,0,0.6);
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
-
-    .menu-wrapper h1 {
+    .breakfast-menu h2 {
       text-align: center;
       font-family: "IranNastaliq", cursive;
-      font-size: 2rem;
-      margin-bottom: 20px;
+      font-size: 1.8rem;
       color: #00ffff;
+      margin-bottom: 20px;
     }
-
-    .menu-item {
+    .breakfast-item {
       margin-bottom: 15px;
       padding-bottom: 10px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
     }
-
-    .menu-item h2 {
-      display: inline-block;
+    .breakfast-item span.name {
+      color: #ffd700;
       font-family: "IranNastaliq", cursive;
       font-size: 1.2rem;
-      margin: 0;
-      color: #ffd700;
     }
-
-    .menu-item .price {
+    .breakfast-item span.price {
       float: left;
-      font-family: "Vazirmatn", sans-serif;
-      font-size: 1.1rem;
-      font-weight: bold;
       color: #00ffff;
+      font-weight: bold;
     }
-
-    .menu-item p {
+    .breakfast-item p {
       margin: 2px 0 0;
       font-size: 0.9rem;
-      line-height: 1.3rem;
       color: #fff;
       clear: both;
     }
-
-    /* Clear floats */
-    .menu-item::after {
-      content: "";
-      display: block;
-      clear: both;
-    }
-
-    @media (max-width: 600px) {
-      .menu-wrapper { margin: 80px 10px 20px; padding: 15px; }
-      .menu-item h2 { font-size: 1rem; }
-      .menu-item .price { font-size: 1rem; }
-      .menu-item p { font-size: 0.8rem; }
-    }
+    .breakfast-item::after { content: ""; display: block; clear: both; }
   </style>
 </head>
+
 <body>
 
-  <div class="menu-wrapper">
-    <h1>منوی صبحانه</h1>
+  <div class="navbar">
+    <img src="logo.png" class="logo" alt="Cafe 365">
+  </div>
 
-    <div class="menu-item">
-      <h2>وافل</h2>
+  <div class="ticker-wrapper">
+    <div class="ticker">
+      <span>پناه حال خوب هر روز سال</span>
+    </div>
+  </div>
+
+  <div class="banner">
+    <h1>CAFE BALCONY 365</h1>
+  </div>
+
+  <div class="menu-container">
+    <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');"><h2>صبح دلبرانه</h2></a>
+    <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye khial.jpg');"><h2>خنکای خیال</h2></a>
+    <a href="menu3.html" class="menu-card" style="background-image: url('garm va delneshin.jpg');"><h2>گرم و دلنشین</h2></a>
+    <a href="menu4.html" class="menu-card" style="background-image: url('delbarhaye shirin.jpg');"><h2>دلبرهای شیرین</h2></a>
+    <a href="menu5.html" class="menu-card" style="background-image: url('Sabok va salem.jpg');"><h2>سبک و سالم</h2></a>
+    <a href="menu6.html" class="menu-card" style="background-image: url('sofre garm.jpg');"><h2>سفره‌ی گرم 365</h2></a>
+  </div>
+
+  <!-- Breakfast Menu -->
+  <div class="breakfast-menu">
+    <h2>منوی صبحانه</h2>
+
+    <div class="breakfast-item">
+      <span class="name">وافل</span>
       <span class="price">225.000</span>
     </div>
-
-    <div class="menu-item">
-      <h2>پنکیک</h2>
+    <div class="breakfast-item">
+      <span class="name">پنکیک</span>
       <span class="price">225.000</span>
     </div>
-
-    <div class="menu-item">
-      <h2>کروسان</h2>
+    <div class="breakfast-item">
+      <span class="name">کروسان</span>
       <span class="price">216.000</span>
     </div>
-
-    <div class="menu-item">
-      <h2>املت گوشت</h2>
+    <div class="breakfast-item">
+      <span class="name">املت گوشت</span>
       <span class="price">258.000</span>
       <p>گوشت چرخی، سوسیس، تخم مرغ، نان تازه کنجدی</p>
     </div>
-
-    <div class="menu-item">
-      <h2>املت ایرانی</h2>
+    <div class="breakfast-item">
+      <span class="name">املت ایرانی</span>
       <span class="price">143.000</span>
       <p>گوجه تازه، 2 عدد تخم مرغ همزده با کلاسیک‌ترین طبخ ایرانی</p>
     </div>
-
-    <div class="menu-item">
-      <h2>املت فلفلی</h2>
+    <div class="breakfast-item">
+      <span class="name">املت فلفلی</span>
       <span class="price">235.000</span>
       <p>پپرونی، تخم مرغ، فلفل سبز، پنیر پیتزا</p>
     </div>
-
-    <div class="menu-item">
-      <h2>املت اسفناج</h2>
+    <div class="breakfast-item">
+      <span class="name">املت اسفناج</span>
       <span class="price">235.000</span>
       <p>اسفناج تازه، گوجه فرنگی، ژامبون پنیر صبحانه، تخم مرغ</p>
     </div>
-
-    <div class="menu-item">
-      <h2>پنیر برشته</h2>
-      <span class="price">143.000</span>
-      <p>پنیر خامه‌ای، پنیر دانمارکی، پنیر پیتزا، پنیر فتا، تخم مرغ، شوید</p>
-    </div>
-
-    <div class="menu-item">
-      <h2>بشقاب انگلیسی</h2>
-      <span class="price">425.000</span>
-      <p>لوبیا گرم، تخم مرغ، گوجه کبابی، املت قارچ، تست ژامبون</p>
-    </div>
-
-    <div class="menu-item">
-      <h2>بشقاب ایرانی</h2>
-      <span class="price">242.000</span>
-      <p>پنیر، کره، مربا، خیار، گوجه فرنگی، نیمرو</p>
-    </div>
-
-    <div class="menu-item">
-      <h2>کروسان</h2>
-      <span class="price">212.000</span>
-      <p>نیمرو، ژامبون، کاهو، سس مخصوص</p>
-    </div>
-
-    <div class="menu-item">
-      <h2>تخم مرغ خرما</h2>
-      <span class="price">215.000</span>
-      <p>تخم مرغ، خرما، گردو، سیاه دانه، کنجد و ادویه مخصوص</p>
-    </div>
-
-    <div class="menu-item">
-      <h2>سوسیس تخم مرغ</h2>
-      <span class="price">179.000</span>
-      <p>سوسیس، تخم مرغ، ادویه مخصوص</p>
-    </div>
-
-    <div class="menu-item">
-      <h2>نیمرو</h2>
-      <span class="price">111.000</span>
-      <p>3 عدد تخم مرغ</p>
-    </div>
-
   </div>
 
 </body>
