@@ -7,17 +7,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=IranNastaliq&display=swap" rel="stylesheet">
 <style>
   * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:"Vazirmatn", sans-serif; background: linear-gradient(135deg,#006666 20%,#1e1e1e 100%); color:#fff; padding:20px; }
+  body { font-family:"Vazirmatn", sans-serif; background:#1e1e1e; color:#fff; padding:0; }
 
-  h1, h2 { font-family:"IranNastaliq", cursive; margin-bottom:12px; }
+  h1,h2 { font-family:"IranNastaliq", cursive; }
+
+  /* بنر بالا */
+  .banner {
+    width:100%;
+    height:200px;
+    background:url('images/sobhe delbarane.jpg') center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#ffd900;
+    font-size:2rem;
+    text-shadow:0 0 8px rgba(0,0,0,0.7);
+  }
 
   /* کارت‌ها ردیفی و کوچک */
   .card-row {
     display:flex;
     gap:12px;
     overflow-x:auto;
-    padding-bottom:16px;
-    margin-bottom:20px;
+    padding:16px;
+    background:rgba(0,0,0,0.6);
   }
   .menu-card {
     flex:0 0 auto;
@@ -55,7 +68,7 @@
     border-radius:12px;
     padding:20px;
     max-width:800px;
-    margin:0 auto;
+    margin:20px auto;
     font-size:1rem;
     line-height:1.6;
   }
@@ -64,38 +77,13 @@
   .card-row::-webkit-scrollbar { height:6px; }
   .card-row::-webkit-scrollbar-thumb { background:#ffd700; border-radius:3px; }
 
-  /* موبایل */
   @media(max-width:600px){
     .menu-card{width:90px; height:80px;}
     .menu-box{font-size:0.9rem;}
+    .banner{height:150px; font-size:1.5rem;}
   }
 </style>
 </head>
 <body>
 
-<h1>منوی صبحانه - Cafe 365</h1>
-
-<!-- کارت‌ها کوچک و افقی -->
-<div class="card-row">
-  <div class="menu-card" style="background-image:url('images/sobhe delbarane.jpg');"><span>صبح دلبرانه</span></div>
-  <div class="menu-card" style="background-image:url('images/khonakaye khial.jpg');"><span>خنکای خیال</span></div>
-  <div class="menu-card" style="background-image:url('images/garm va delneshin.jpg');"><span>گرم و دلنشین</span></div>
-  <div class="menu-card" style="background-image:url('images/delbarhaye shirin.jpg');"><span>دلبرهای شیرین</span></div>
-</div>
-
-<!-- متن منوی صبحانه -->
-<div class="menu-box">
-  <h2>صبحانه</h2>
-  <p>
-    اینجا متن منوی صبحانه را اضافه کن.  
-    می‌توانی آیتم‌ها را به همراه قیمت و توضیحات قرار دهی، مثلا:  
-  </p>
-  <ul>
-    <li>املت با سبزیجات - ۲۵۰۰۰ تومان</li>
-    <li>پنکیک با عسل و کره - ۳۰۰۰۰ تومان</li>
-    <li>سینی صبحانه ویژه - ۴۰۰۰۰ تومان</li>
-  </ul>
-</div>
-
-</body>
-</html>
+<!-- بنر بال
