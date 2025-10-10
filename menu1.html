@@ -58,50 +58,30 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* جمله زیر بنر */
-    header p {
-      text-align: center;
-      font-family: "IranNastaliq", cursive;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #fff;
-      margin: 18px 10px 0;
-      text-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
-
-    /* کارت‌ها - فیت افقی در ۶ قسمت بدون اسکرول */
+    /* کارت‌ها - دو ردیف سه‌تایی زیر بنر */
     .menu-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: stretch;
-      width: 100%;
-      padding: 10px;
-      gap: 10px;
-      flex-wrap: nowrap;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 250px);
+      gap: 20px;
+      padding: 30px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
     .menu-card {
-      flex: 1 1 calc(100% / 6);
-      aspect-ratio: 1 / 1; /* مربع نگه‌می‌دارد */
-      background-size: cover;
-      background-position: center;
+      position: relative;
       border-radius: 16px;
       overflow: hidden;
-      border: 3px double #ffd700;
+      background-size: cover;
+      background-position: center;
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      text-decoration: none;
+      border: 3px double #ffd700;
       color: #fff;
-      position: relative;
-      transition: transform 0.3s ease;
-    }
-    .menu-card h2 {
-      position: relative;
-      font-family: "IranNastaliq", cursive;
-      font-size: 1rem;
-      margin-bottom: 10px;
-      z-index: 1;
-      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .menu-card::before {
       content: "";
@@ -110,8 +90,21 @@
       background: rgba(0,0,0,0.3);
       transition: background 0.4s ease;
     }
-    .menu-card:hover { transform: scale(1.05); }
-    .menu-card:hover::before { background: rgba(0,0,0,0.15); }
+    .menu-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 0 20px 5px rgba(255,215,0,0.5);
+    }
+    .menu-card:hover::before {
+      background: rgba(0,0,0,0.15);
+    }
+    .menu-card h2 {
+      position: relative;
+      font-family: "IranNastaliq", cursive;
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      z-index: 1;
+      text-align: center;
+    }
 
     /* دکمه‌های پایین */
     .footer-buttons {
@@ -140,16 +133,22 @@
       object-fit: contain;
     }
 
-    /* واکنش‌گرا - کارت‌ها کوچک‌تر می‌شن ولی افقی می‌مونن */
-    @media (max-width: 900px) {
-      .menu-card { flex: 1 1 calc(100% / 6); }
-      .menu-card h2 { font-size: 0.9rem; }
+    /* موبایل */
+    @media (max-width: 800px) {
+      .menu-container {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 14px;
+      }
+      .menu-card { height: 180px; }
+      .menu-card h2 { font-size: 1rem; }
     }
 
-    @media (max-width: 600px) {
-      .menu-container { gap: 6px; padding: 8px; }
-      .menu-card { flex: 1 1 calc(100% / 6); aspect-ratio: 1/1; }
-      .menu-card h2 { font-size: 0.7rem; }
+    @media (max-width: 500px) {
+      .menu-container {
+        grid-template-columns: 1fr;
+      }
+      .menu-card { height: 160px; }
     }
   </style>
 </head>
@@ -165,12 +164,7 @@
     <h1>CAFE BALCONY 365</h1>
   </div>
 
-  <!-- جمله -->
-  <header>
-    <p>پناه حال خوب هر روز سال</p>
-  </header>
-
-  <!-- کارت‌ها زیر بنر - ۶ قسمت افقی -->
+  <!-- کارت‌ها (زیر بنر، جای جمله قبلی) -->
   <div class="menu-container">
     <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');"><h2>صبح دلبرانه</h2></a>
     <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye khial.jpg');"><h2>خنکای خیال</h2></a>
