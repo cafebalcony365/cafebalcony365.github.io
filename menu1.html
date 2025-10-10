@@ -58,17 +58,6 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* جمله زیر بنر */
-    header p {
-      text-align: center;
-      font-family: "IranNastaliq", cursive;
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #fff;
-      margin: 18px 10px 0;
-      text-shadow: 0 0 10px rgba(0,0,0,0.4);
-    }
-
     /* کارت‌ها - فیت افقی در ۶ قسمت بدون اسکرول */
     .menu-container {
       display: flex;
@@ -81,7 +70,7 @@
     }
     .menu-card {
       flex: 1 1 calc(100% / 6);
-      aspect-ratio: 1 / 1; /* مربع نگه‌می‌دارد */
+      aspect-ratio: 1 / 1;
       background-size: cover;
       background-position: center;
       border-radius: 16px;
@@ -140,7 +129,7 @@
       object-fit: contain;
     }
 
-    /* واکنش‌گرا - کارت‌ها کوچک‌تر می‌شن ولی افقی می‌مونن */
+    /* واکنش‌گرا */
     @media (max-width: 900px) {
       .menu-card { flex: 1 1 calc(100% / 6); }
       .menu-card h2 { font-size: 0.9rem; }
@@ -164,11 +153,6 @@
   <div class="banner">
     <h1>CAFE BALCONY 365</h1>
   </div>
-
-  <!-- جمله -->
-  <header>
-    <p>پناه حال خوب هر روز سال</p>
-  </header>
 
   <!-- کارت‌ها زیر بنر - ۶ قسمت افقی -->
   <div class="menu-container">
