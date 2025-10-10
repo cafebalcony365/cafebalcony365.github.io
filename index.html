@@ -2,283 +2,167 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cafe 365</title>
 
   <!-- فونت فارسی -->
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=IranNastaliq&display=swap" rel="stylesheet">
 
   <style>
-    /* پایه */
     * { box-sizing: border-box; }
     html, body {
-      height: 100%;
       margin: 0;
       padding: 0;
       max-width: 100%;
-      overflow-x: hidden; /* مهم: جلوگیری از اسکرول افقی کلی صفحه */
-      -webkit-text-size-adjust: 100%;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      font-family: "Vazirmatn", Tahoma, sans-serif;
-      background: linear-gradient(135deg, #006666 20%, #1e1e1e 100%);
+      overflow-x: hidden;
+      font-family: "Vazirmatn", sans-serif;
+      background: linear-gradient(135deg, #007070 10%, #1c1c1c 100%);
       color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      text-align: center;
     }
 
-    img { max-width: 100%; height: auto; display: block; }
-
-    /* نوار بالایی فیکس */
-    .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 10px 18px;
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(6px);
-      border-bottom: 2px solid rgba(255,215,0,0.25);
-      transition: background 0.25s ease, padding 0.25s ease;
-    }
-    .navbar.scrolled { background: rgba(0,0,0,0.85); padding: 6px 18px; }
-
-    .navbar .logo { height: 42px; width: auto; display: block; }
-    .navbar .links { display: flex; gap: 10px; align-items:center; }
-    .navbar a { color: #ffd700; text-decoration: none; font-weight: 700; padding: 6px; }
-    .navbar a:hover { color: #fff; }
-
-    /* بنر (فاصله از navbar رو رعایت می‌کنه) */
+    /* بنر بالا */
     .banner {
-      margin-top: 70px;
       width: 100%;
-      height: 230px;
+      height: 180px;
       background: url('b4.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
       border-bottom: 4px solid #ffd700;
+      margin-top: 10px;
     }
+
     .banner h1 {
-      margin: 0;
       font-family: "IranNastaliq", cursive;
-      font-size: 2.4rem;
+      font-size: 1.8rem;
       color: #ffd900;
-      padding: 8px 20px;
-      border-radius: 16px;
-      background: rgba(0,0,0,0.45);
-      text-shadow: 0 0 10px rgba(0,0,0,0.6);
+      text-shadow: 0 0 10px rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.4);
+      padding: 6px 20px;
+      border-radius: 12px;
     }
 
+    /* جمله زیر بنر */
     header p {
-      margin: 12px auto 0;
-      text-align: center;
       font-family: "IranNastaliq", cursive;
-      font-size: 1.4rem;
-      font-weight: 700;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background: linear-gradient(90deg,#40E0D0,#2f2f2f);
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.25);
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 14px 10px;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(0,0,0,0.7);
     }
 
-    /* کانتینر کارت‌ها (دسکتاپ: grid، موبایل: افقی اسکرول) */
+    /* کارت‌های منو (اسکرول افقی) */
     .menu-container {
-      max-width: 1100px;
-      margin: 36px auto;
-      padding: 0 18px 24px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 22px;
-      width: 100%;
+      display: flex;
+      overflow-x: auto;
+      gap: 14px;
+      padding: 14px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      justify-content: flex-start;
     }
 
     .menu-card {
-      position: relative;
-      height: 220px;
-      border-radius: 20px;
+      flex: 0 0 auto;
+      min-width: 160px;
+      height: 150px;
+      border-radius: 18px;
       overflow: hidden;
+      border: 3px double #ffd700;
+      background-size: cover;
+      background-position: center;
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      text-decoration: none;
+      scroll-snap-align: center;
+      position: relative;
       color: #fff;
-      background-size: cover;
-      background-position: center;
-      border: 4px double #ffd700;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-      flex-shrink: 0;
+      text-decoration: none;
     }
-    .menu-card.visible { opacity: 1; transform: translateY(0); }
 
     .menu-card::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.34);
-      transition: background .3s;
+      background: rgba(0,0,0,0.35);
     }
-    .menu-card:hover::before { background: rgba(0,0,0,0.14); }
 
     .menu-card h2 {
       position: relative;
-      z-index: 2;
-      margin: 0 0 16px;
       font-family: "IranNastaliq", cursive;
-      font-size: 1.35rem;
-      text-shadow: 0 0 8px rgba(0,0,0,0.7);
+      font-size: 1rem;
+      margin-bottom: 10px;
+      z-index: 1;
     }
 
-    /* دکمه‌های پایین */
+    /* دکمه‌های پایین (۳×۲) */
     .footer-buttons {
-      display: flex;
-      gap: 18px;
-      justify-content: center;
-      align-items: center;
-      padding: 18px;
-      border-top: 2px solid rgba(255,215,0,0.18);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
+      gap: 16px;
+      padding: 26px 10px 36px;
       background: rgba(0,0,0,0.8);
-      flex-wrap: wrap;
+      border-top: 2px solid rgba(255,215,0,0.2);
     }
+
     .footer-buttons a {
-      width: 56px;
-      height: 56px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       border: 3px solid #ffd700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: #111;
-      text-decoration: none;
-    }
-    .footer-buttons img { width: 68%; height: 68%; object-fit: contain; }
-
-    /* ===== موبایل ===== */
-    @media (max-width: 760px) {
-      .banner { height: 180px; margin-top: 66px; }
-      .banner h1 { font-size: 1.9rem; padding: 6px 14px; }
-
-      /* منو: حالت افقی با اسکرول نرم */
-      .menu-container {
-        display: flex;
-        overflow-x: auto;
-        gap: 14px;
-        padding: 12px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        width: 100%;
-      }
-
-      .menu-card {
-        min-width: 170px;
-        height: 160px;
-        border-radius: 14px;
-        scroll-snap-align: center;
-      }
-
-      .menu-card h2 { font-size: 1rem; margin-bottom: 12px; }
-
-      /* navbar موبایل ستاپ */
-      .navbar { padding: 8px 12px; flex-direction: row; }
-      .navbar .links { display: none; } /* اگر خواستی همبرگر بزاری اینجا نمایش بده */
-      .navbar .logo { height: 36px; }
+      transition: transform 0.25s ease;
     }
 
-    /* بیشتر ریسپانسیو کوچک */
-    @media (max-width: 420px) {
-      .menu-card { min-width: 150px; height: 150px; }
-      .banner { height: 150px; margin-top: 64px; }
-      .banner h1 { font-size: 1.5rem; }
+    .footer-buttons a:hover {
+      transform: scale(1.1);
+    }
+
+    .footer-buttons img {
+      width: 60%;
+      height: 60%;
+      object-fit: contain;
     }
   </style>
 </head>
+
 <body>
-  <!-- navbar -->
-  <div class="navbar" role="navigation">
-    <img src="logo.png" alt="Cafe 365" class="logo" />
-    <div class="links" aria-hidden="true">
-      <a href="#">خانه</a>
-      <a href="#menu">منو</a>
-      <a href="gallery.html">گالری</a>
-      <a href="hafez.html">رویدادها</a>
-      <a href="#contact">تماس</a>
-    </div>
-  </div>
 
   <!-- بنر -->
-  <div class="banner" aria-hidden="true">
+  <div class="banner">
     <h1>CAFE BALCONY 365</h1>
   </div>
 
+  <!-- جمله -->
   <header>
     <p>پناه حال خوب هر روز سال</p>
   </header>
 
   <!-- کارت‌های منو -->
-  <div id="menu" class="menu-container">
-    <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');">
-      <h2>صبح دلبرانه</h2>
-    </a>
-    <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye khial.jpg');">
-      <h2>خنکای خیال</h2>
-    </a>
-    <a href="menu3.html" class="menu-card" style="background-image: url('garm va delneshin.jpg');">
-      <h2>گرم و دلنشین</h2>
-    </a>
-    <a href="menu4.html" class="menu-card" style="background-image: url('delbarhaye shirin.jpg');">
-      <h2>دلبرهای شیرین</h2>
-    </a>
-    <a href="menu5.html" class="menu-card" style="background-image: url('Sabok va salem.jpg');">
-      <h2>سبک و سالم</h2>
-    </a>
-    <a href="menu6.html" class="menu-card" style="background-image: url('sofre garm.jpg');">
-      <h2>سفره‌ی گرم 365</h2>
-    </a>
+  <div class="menu-container">
+    <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');"><h2>صبح دلبرانه</h2></a>
+    <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye khial.jpg');"><h2>خنکای خیال</h2></a>
+    <a href="menu3.html" class="menu-card" style="background-image: url('garm va delneshin.jpg');"><h2>گرم و دلنشین</h2></a>
+    <a href="menu4.html" class="menu-card" style="background-image: url('delbarhaye shirin.jpg');"><h2>دلبرهای شیرین</h2></a>
+    <a href="menu5.html" class="menu-card" style="background-image: url('Sabok va salem.jpg');"><h2>سبک و سالم</h2></a>
+    <a href="menu6.html" class="menu-card" style="background-image: url('sofre garm.jpg');"><h2>سفره‌ی گرم 365</h2></a>
   </div>
 
   <!-- دکمه‌های پایین -->
-  <div id="contact" class="footer-buttons">
-    <a href="https://instagram.com/yourpage" target="_blank" rel="noopener"><img src="instagram.png" alt="اینستاگرام"></a>
-    <a href="https://t.me/yourpage" target="_blank" rel="noopener"><img src="telegram.png" alt="تلگرام"></a>
-    <a href="https://maps.google.com/?q=YourLocation" target="_blank" rel="noopener"><img src="map.png" alt="موقعیت"></a>
+  <div class="footer-buttons">
     <a href="gallery.html"><img src="photo.png" alt="گالری"></a>
-    <a href="hafez.html"><img src="events.png" alt="همایش"></a>
+    <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="map.png" alt="نقشه"></a>
+    <a href="https://t.me/yourpage" target="_blank"><img src="telegram.png" alt="تلگرام"></a>
+    <a href="https://instagram.com/yourpage" target="_blank"><img src="instagram.png" alt="اینستاگرام"></a>
+    <a href="hafez.html"><img src="events.png" alt="رویداد"></a>
+    <a href="#"><img src="call.png" alt="تماس"></a>
   </div>
 
-  <script>
-    // IntersectionObserver برای انیمیشن کارت‌ها هنگام دیده شدن
-    (function(){
-      const cards = document.querySelectorAll('.menu-card');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.2 });
-      cards.forEach(c => observer.observe(c));
-    })();
-
-    // تغییر استایل navbar هنگام اسکرول
-    (function(){
-      const navbar = document.querySelector('.navbar');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 48) navbar.classList.add('scrolled');
-        else navbar.classList.remove('scrolled');
-      }, { passive: true });
-    })();
-  </script>
 </body>
 </html>
