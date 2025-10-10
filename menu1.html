@@ -29,8 +29,6 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px 16px;
-      margin: 0;
-      border-bottom: none;
     }
     .navbar img.logo { height: 36px; }
 
@@ -48,7 +46,7 @@
     .ticker {
       display: inline-block;
       white-space: nowrap;
-      direction: ltr;
+      will-change: transform;
     }
     .ticker span {
       display: inline-block;
@@ -57,36 +55,28 @@
       font-size: 1.3rem;
       line-height: 40px;
       font-weight: bold;
-      transform: translateX(-100%);
-      opacity: 0;
+      padding-left: 100%;
       animation: scroll 15s linear infinite;
     }
     @keyframes scroll {
-      0% { transform: translateX(-100%); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateX(100%); opacity: 0; }
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
 
     /* Banner */
     .banner {
-      margin-top: 50px;
+      margin-top: 60px;
       width: 100%;
       height: 200px;
       background: url('b4.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-bottom: 4px solid #ffd700;
     }
     .banner h1 {
       font-family: "IranNastaliq", cursive;
       font-size: 2.5rem;
-      text-shadow:
-         2px 2px 4px rgba(0,0,0,0.6),
-        -2px -2px 4px rgba(0,0,0,0.6),
-         1px -1px 2px rgba(0,0,0,0.5),
-        -1px 1px 2px rgba(0,0,0,0.5);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
       background: linear-gradient(to bottom, #ffd900 0%, #b8860b 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -101,7 +91,7 @@
       padding: 10px;
       gap: 10px;
       flex-wrap: nowrap;
-      margin-top: 20px;
+      margin-top: 10px;
     }
     .menu-card {
       flex: 1 1 calc(100% / 6);
@@ -139,35 +129,41 @@
 
     /* Breakfast Menu */
     .breakfast-menu {
-      max-width: 1000px;
-      margin: 30px auto;
+      max-width: 800px;
+      margin: 40px auto;
       padding: 20px;
-      border-radius: 16px;
       background: rgba(0,0,0,0.6);
-      font-family: "Vazirmatn", sans-serif;
+      border-radius: 12px;
     }
-    .breakfast-menu h3 {
-      color: #ffd700;
-      margin-top: 10px;
-      margin-bottom: 5px;
-      font-size: 1.3rem;
-      border-bottom: 1px solid #00ffff;
-      display: inline-block;
-      padding-bottom: 3px;
-    }
-    .breakfast-menu .section-title {
+    .breakfast-menu h2 {
+      text-align: center;
+      font-family: "IranNastaliq", cursive;
+      font-size: 1.8rem;
       color: #00ffff;
-      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+    .breakfast-item {
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    .breakfast-item span.name {
+      color: #ffd700;
+      font-family: "IranNastaliq", cursive;
+      font-size: 1.2rem;
+    }
+    .breakfast-item span.price {
+      float: left;
+      color: #00ffff;
       font-weight: bold;
     }
-    .breakfast-menu p {
-      margin: 4px 0;
-      line-height: 1.5;
+    .breakfast-item p {
+      margin: 2px 0 0;
+      font-size: 0.9rem;
+      color: #fff;
+      clear: both;
     }
-    .breakfast-menu .item {
-      display: flex;
-      justify-content: space-between;
-    }
+    .breakfast-item::after { content: ""; display: block; clear: both; }
 
     /* Footer Buttons */
     .footer-buttons {
@@ -192,30 +188,28 @@
     .footer-buttons a:hover { transform: scale(1.1); }
     .footer-buttons img { width: 60%; height: 60%; object-fit: contain; }
 
+    /* Responsive */
     @media (max-width: 900px) { .menu-card h2 { font-size: 0.9rem; } }
     @media (max-width: 600px) { .menu-card h2 { font-size: 0.7rem; } }
   </style>
 </head>
 
 <body>
-  <!-- Navbar -->
+
   <div class="navbar">
     <img src="logo.png" class="logo" alt="Cafe 365">
   </div>
 
-  <!-- Ticker -->
   <div class="ticker-wrapper">
     <div class="ticker">
       <span>پناه حال خوب هر روز سال</span>
     </div>
   </div>
 
-  <!-- Banner -->
   <div class="banner">
     <h1>CAFE BALCONY 365</h1>
   </div>
 
-  <!-- Menu Cards -->
   <div class="menu-container">
     <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');"><h2>صبح دلبرانه</h2></a>
     <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye khial.jpg');"><h2>خنکای خیال</h2></a>
@@ -227,45 +221,91 @@
 
   <!-- Breakfast Menu -->
   <div class="breakfast-menu">
-    <h3></h3>
+    <h2>منوی صبحانه</h2>
 
-    <div class="section-title">صبح شیرین</div>
-    <p class="item"><span>وافل</span><span>225.000</span></p>
-    <p class="item"><span>پنکیک</span><span>225.000</span></p>
-    <p class="item"><span>کروسان</span><span>216.000</span></p>
+    <div class="breakfast-item">
+      <span class="name">وافل</span>
+      <span class="price">225.000</span>
+    </div>
+    <div class="breakfast-item">
+      <span class="name">پنکیک</span>
+      <span class="price">225.000</span>
+    </div>
+    <div class="breakfast-item">
+      <span class="name">کروسان</span>
+      <span class="price">216.000</span>
+    </div>
 
-    <div class="section-title">صبح دلبرانه</div>
-    <p class="item"><span>املت گوشت</span><span>258.000</span></p>
-    <p>(گوشت چرخی، سوسیس، تخم مرغ، نان تازه کنجدی)</p>
-    <p>ترکیب انرژی صبحگاهی امضای 365</p>
+    <div class="breakfast-item">
+      <span class="name">املت گوشت</span>
+      <span class="price">258.000</span>
+      <p>گوشت چرخی، سوسیس، تخم مرغ، نان تازه کنجدی</p>
+    </div>
+    <div class="breakfast-item">
+      <span class="name">املت ایرانی</span>
+      <span class="price">143.000</span>
+      <p>گوجه تازه، 2 عدد تخم مرغ همزده با کلاسیک‌ترین طبخ ایرانی</p>
+    </div>
+    <div class="breakfast-item">
+      <span class="name">املت فلفلی</span>
+      <span class="price">235.000</span>
+      <p>پپرونی، تخم مرغ، فلفل سبز، پنیر پیتزا</p>
+    </div>
+    <div class="breakfast-item">
+      <span class="name">املت اسفناج</span>
+      <span class="price">235.000</span>
+      <p>اسفناج تازه، گوجه فرنگی، ژامبون پنیر صبحانه، تخم مرغ</p>
+    </div>
 
-    <p class="item"><span>املت ایرانی</span><span>143.000</span></p>
-    <p>(گوجه تازه، 2 عدد تخم مرغ همزده با کلاسیک ترین طبخ ایرانی)</p>
+    <div class="breakfast-item">
+      <span class="name">پنیر برشته</span>
+      <span class="price">143.000</span>
+      <p>پنیر خامه‌ای، پنیر دانمارکی، پنیر پیتزا، پنیر فتا، تخم مرغ، شوید</p>
+    </div>
 
-    <p class="item"><span>املت فلفلی</span><span>235.000</span></p>
-    <p>(پپرونی، تخم مرغ، فلفل سبز، پنیر پیتزا)</p>
+    <div class="breakfast-item">
+      <span class="name">بشقاب انگلیسی</span>
+      <span class="price">425.000</span>
+      <p>لوبیا گرم، تخم مرغ، گوجه کبابی، املت قارچ، تست ژامبون</p>
+      <p>یک شروع کامل برای روزی پر انرژی</p>
+    </div>
+    <div class="breakfast-item">
+      <span class="name">بشقاب ایرانی</span>
+      <span class="price">242.000</span>
+      <p>پنیر، کره، مربا، خیار، گوجه فرنگی، نیمرو</p>
+      <p>طعم اصیل و دلنشین</p>
+    </div>
+    <div class="breakfast-item">
+      <span class="name">کروسان</span>
+      <span class="price">212.000</span>
+      <p>نیمرو، ژامبون، کاهو، سس مخصوص</p>
+    </div>
+    <div class="breakfast-item">
+      <span class="name">تخم مرغ خرما</span>
+      <span class="price">215.000</span>
+      <p>تخم مرغ، خرما، گردو، سیاه دانه، کنجد و ادویه مخصوص</p>
+    </div>
+    <div class="breakfast-item">
+      <span class="name">سوسیس تخم مرغ</span>
+      <span class="price">179.000</span>
+      <p>سوسیس، تخم مرغ، ادویه مخصوص</p>
+    </div>
+    <div class="breakfast-item">
+      <span class="name">نیمرو</span>
+      <span class="price">111.000</span>
+      <p>3 عدد تخم مرغ</p>
+    </div>
+  </div>
 
-    <p class="item"><span>املت اسفناج</span><span>235.000</span></p>
-    <p>(اسفناج تازه، گوجه فرنگی، ژامبون پنیر صبحانه، تخم مرغ)</p>
+  <!-- Footer Buttons -->
+  <div class="footer-buttons">
+    <a href="gallery.html"><img src="photo.png" alt="گالری"></a>
+    <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="map.png" alt="نقشه"></a>
+    <a href="https://t.me/yourpage" target="_blank"><img src="telegram.png" alt="تلگرام"></a>
+    <a href="https://instagram.com/yourpage" target="_blank"><img src="instagram.png" alt="اینستاگرام"></a>
+    <a href="hafez.html"><img src="events.png" alt="رویداد"></a>
+    <a href="#"><img src="call.png" alt="تماس"></a>
+  </div>
 
-    <div class="section-title">پنیرانه و اسکرامبل</div>
-    <p class="item"><span>پنیر برشته</span><span>143.000</span></p>
-    <p>(پنیر خامه ای، پنیر دانمارکی، پنیر پیتزا، پنیر فتا، تخم مرغ، شوید)</p>
-
-    <div class="section-title">صبحانه های فصل</div>
-    <p class="item"><span>بشقاب انگلیسی</span><span>425.000</span></p>
-    <p>(لوبیا گرم، تخم مرغ، گوجه کبابی، املت قارچ، تست ژامبون)</p>
-    <p>یک شروع کامل برای روزی پر انرژی</p>
-
-    <p class="item"><span>بشقاب ایرانی</span><span>242.000</span></p>
-    <p>(پنیر، کره، مربا، خیار، گوجه فرنگی، نیمرو)</p>
-    <p>طعم اصیل و دلنشین</p>
-
-    <p class="item"><span>کروسان</span><span>212.000</span></p>
-    <p>(نیمرو، ژامبون، کاهو، سس مخصوص)</p>
-
-    <p class="item"><span>تخم مرغ خرما</span><span>215.000</span></p>
-    <p>(تخم مرغ، خرما، گردو، سیاه دانه، کنجد و ادویه مخصوص)</p>
-
-    <p class="item"><span>سوسیس تخم مرغ</span><span>179.000</span></p>
-    <p>(سوسیس، تخم مرغ، اد
+</body>
+</html>
