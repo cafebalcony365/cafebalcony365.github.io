@@ -32,7 +32,6 @@
       padding: 10px 16px;
       border-bottom: 2px solid rgba(255,215,0,0.3);
     }
-    .navbar img.logo { height: 36px; }
 
     /* بنر */
     .banner {
@@ -69,67 +68,59 @@
       text-shadow: 0 0 10px rgba(0,0,0,0.4);
     }
 
-    /* کارت‌ها - متن و عکس حفظ، استایل فوتر */
+    /* کارت‌ها - یک ردیف افقی بدون اسکرول */
     .menu-container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      display: flex;
+      gap: 10px;
       padding: 20px;
-      max-width: 1000px;
+      max-width: 100%;
       margin: 20px auto;
     }
-
     .menu-card {
+      flex: 1;       /* هر کارت یک ششم عرض */
+      min-width: 0;  /* جلوگیری از overflow */
+      height: 200px;
       position: relative;
-      height: 50px; /* کوتاه مثل فوتر */
-      border-radius: 12px;
+      border-radius: 16px;
       overflow: hidden;
       background-size: cover;
       background-position: center;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
-      border: 2px solid #ffd700; /* حاشیه طلایی */
-      color: #ffd700;
+      border: 3px double #ffd700;
+      color: #fff;
       text-decoration: none;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(40px) scale(0.95);
+      transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.8s ease-in-out, box-shadow 0.8s ease-in-out;
     }
-
+    .menu-card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      box-shadow: 0 0 30px 6px rgba(255, 215, 0, 0.6);
+    }
+    .menu-card:hover { transform: translateY(-6px) scale(1.03); }
     .menu-card::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.4); /* تیره کردن عکس */
-      transition: background 0.3s ease;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.4s ease-in-out;
     }
-
-    .menu-card.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .menu-card.visible::before {
+      background: rgba(0,0,0,0.15);
     }
-
-    .menu-card:hover::before {
-      background: rgba(0,0,0,0.25);
-    }
-
-    .menu-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px 4px rgba(255,215,0,0.4);
-    }
-
     .menu-card h2 {
       position: relative;
       font-family: "IranNastaliq", cursive;
-      font-size: 1rem;
-      margin: 0;
+      font-size: 1.2rem;
+      margin-bottom: 12px;
       z-index: 1;
-      color: #ffd700;
     }
 
-    /* دکمه‌های پایین کوچک و کنار هم */
+    /* دکمه‌های پایین */
     .footer-buttons {
       display: flex;
       justify-content: center;
@@ -162,14 +153,8 @@
       .banner h1 { font-size: 1.6rem; padding: 6px 12px; }
       header p { font-size: 1.3rem; margin-top: 14px; }
 
-      .menu-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        padding: 14px;
-      }
-      .menu-card { height: 44px; }
-      .menu-card h2 { font-size: 0.9rem; }
-
+      .menu-container { flex-wrap: wrap; gap: 8px; padding: 14px; }
+      .menu-card { flex: 0 0 48%; height: 140px; }
       .footer-buttons { gap: 8px; padding: 12px 10px 16px; }
       .footer-buttons a { width: 36px; height: 36px; border-width: 2px; }
     }
@@ -179,7 +164,7 @@
 <body>
   <!-- navbar -->
   <div class="navbar">
-    <img src="logo.png" class="logo" alt="Cafe 365">
+    <!-- لوگو حذف شد -->
   </div>
 
   <!-- بنر -->
@@ -219,7 +204,7 @@
       entries.forEach(entry => {
         if(entry.isIntersecting){
           const card = entry.target;
-          const delay = Array.from(cards).indexOf(card) * 150; // تأخیر 150ms بین کارت‌ها
+          const delay = Array.from(cards).indexOf(card) * 150;
           setTimeout(() => card.classList.add('visible'), delay);
           observer.unobserve(card);
         }
