@@ -19,7 +19,7 @@
       color: #fff;
     }
 
-    /* Navbar بدون خط پایین و چسبیده به بالا */
+    /* Navbar */
     .navbar {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -98,47 +98,59 @@
     /* Menu Cards */
     .menu-container {
       display: flex;
-      justify-content: space-between;
-      align-items: stretch;
-      width: 100%;
-      padding: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
       gap: 10px;
-      flex-wrap: nowrap;
+      padding: 10px;
       margin-top: 20px;
     }
     .menu-card {
-      flex: 1 1 calc(100% / 6);
-      aspect-ratio: 1 / 1;
+      flex: 1 1 calc(33.33% - 10px);
       background-size: cover;
       background-position: center;
       border-radius: 16px;
       overflow: hidden;
       border: 3px double #ffd700;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
       text-decoration: none;
       color: #fff;
       position: relative;
+      display: flex;
+      align-items: flex-end;
       transition: transform 0.3s ease;
-    }
-    .menu-card h2 {
-      position: relative;
-      font-family: "IranNastaliq", cursive;
-      font-size: 1rem;
-      margin-bottom: 10px;
-      z-index: 1;
-      text-align: center;
-    }
-    .menu-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.3);
-      transition: background 0.4s ease;
+      min-height: 180px;
     }
     .menu-card:hover { transform: scale(1.05); }
-    .menu-card:hover::before { background: rgba(0,0,0,0.15); }
+
+    .menu-text {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      background: rgba(0,0,0,0.4);
+      padding: 8px;
+      border-radius: 8px;
+      width: 100%;
+    }
+
+    .menu-text h2 {
+      font-family: "IranNastaliq", cursive;
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .menu-text .price {
+      display: block;
+      font-family: "Vazirmatn", sans-serif;
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin: 2px 0;
+      color: #ffd700;
+    }
+
+    .menu-text p {
+      font-size: 0.75rem;
+      margin: 2px 0 0;
+      line-height: 1.2rem;
+    }
 
     /* Footer Buttons */
     .footer-buttons {
@@ -164,11 +176,10 @@
     .footer-buttons img { width: 60%; height: 60%; object-fit: contain; }
 
     /* Responsive */
-    @media (max-width: 900px) { .menu-card h2 { font-size: 0.9rem; } }
-    @media (max-width: 600px) { .menu-card h2 { font-size: 0.7rem; } }
+    @media (max-width: 900px) { .menu-card { flex: 1 1 calc(50% - 10px); } }
+    @media (max-width: 600px) { .menu-card { flex: 1 1 100%; } }
   </style>
 </head>
-
 <body>
   <!-- Navbar -->
   <div class="navbar">
@@ -189,12 +200,116 @@
 
   <!-- Menu Cards -->
   <div class="menu-container">
-    <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');"><h2>صبح دلبرانه</h2></a>
-    <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye khial.jpg');"><h2>خنکای خیال</h2></a>
-    <a href="menu3.html" class="menu-card" style="background-image: url('garm va delneshin.jpg');"><h2>گرم و دلنشین</h2></a>
-    <a href="menu4.html" class="menu-card" style="background-image: url('delbarhaye shirin.jpg');"><h2>دلبرهای شیرین</h2></a>
-    <a href="menu5.html" class="menu-card" style="background-image: url('Sabok va salem.jpg');"><h2>سبک و سالم</h2></a>
-    <a href="menu6.html" class="menu-card" style="background-image: url('sofre garm.jpg');"><h2>سفره‌ی گرم 365</h2></a>
+
+    <a href="#" class="menu-card" style="background-image: url('waffle.jpg');">
+      <div class="menu-text">
+        <h2>وافل</h2>
+        <span class="price">225.000</span>
+      </div>
+    </a>
+
+    <a href="#" class="menu-card" style="background-image: url('pancake.jpg');">
+      <div class="menu-text">
+        <h2>پنکیک</h2>
+        <span class="price">225.000</span>
+      </div>
+    </a>
+
+    <a href="#" class="menu-card" style="background-image: url('croissant.jpg');">
+      <div class="menu-text">
+        <h2>کروسان</h2>
+        <span class="price">216.000</span>
+      </div>
+    </a>
+
+    <a href="#" class="menu-card" style="background-image: url('omelet_ghosht.jpg');">
+      <div class="menu-text">
+        <h2>املت گوشت</h2>
+        <span class="price">258.000</span>
+        <p>گوشت چرخی، سوسیس، تخم مرغ، نان تازه کنجدی</p>
+      </div>
+    </a>
+
+    <a href="#" class="menu-card" style="background-image: url('omelet_irani.jpg');">
+      <div class="menu-text">
+        <h2>املت ایرانی</h2>
+        <span class="price">143.000</span>
+        <p>گوجه تازه، 2 عدد تخم مرغ همزده با کلاسیک‌ترین طبخ ایرانی</p>
+      </div>
+    </a>
+
+    <a href="#" class="menu-card" style="background-image: url('omelet_felfeli.jpg');">
+      <div class="menu-text">
+        <h2>املت فلفلی</h2>
+        <span class="price">235.000</span>
+        <p>پپرونی، تخم مرغ، فلفل سبز، پنیر پیتزا</p>
+      </div>
+    </a>
+
+    <a href="#" class="menu-card" style="background-image: url('omelet_esfenaj.jpg');">
+      <div class="menu-text">
+        <h2>املت اسفناج</h2>
+        <span class="price">235.000</span>
+        <p>اسفناج تازه، گوجه فرنگی، ژامبون پنیر صبحانه، تخم مرغ</p>
+      </div>
+    </a>
+
+    <a href="#" class="menu-card" style="background-image: url('panirane.jpg');">
+      <div class="menu-text">
+        <h2>پنیر برشته</h2>
+        <span class="price">143.000</span>
+        <p>پنیر خامه‌ای، پنیر دانمارکی، پنیر پیتزا، پنیر فتا، تخم مرغ، شوید</p>
+      </div>
+    </a>
+
+    <a href="#" class="menu-card" style="background-image: url('beshqab_anglisi.jpg');">
+      <div class="menu-text">
+        <h2>بشقاب انگلیسی</h2>
+        <span class="price">425.000</span>
+        <p>لوبیا گرم، تخم مرغ، گوجه کبابی، املت قارچ، تست ژامبون</p>
+      </div>
+    </a>
+
+    <a href="#" class="menu-card" style="background-image: url('beshqab_irani.jpg');">
+      <div class="menu-text">
+        <h2>بشقاب ایرانی</h2>
+        <span class="price">242.000</span>
+        <p>پنیر، کره، مربا، خیار، گوجه فرنگی، نیمرو</p>
+      </div>
+    </a>
+
+    <a href="#" class="menu-card" style="background-image: url('croissant2.jpg');">
+      <div class="menu-text">
+        <h2>کروسان</h2>
+        <span class="price">212.000</span>
+        <p>نیمرو، ژامبون، کاهو، سس مخصوص</p>
+      </div>
+    </a>
+
+    <a href="#" class="menu-card" style="background-image: url('tokhme_morgh_kharma.jpg');">
+      <div class="menu-text">
+        <h2>تخم مرغ خرما</h2>
+        <span class="price">215.000</span>
+        <p>تخم مرغ، خرما، گردو، سیاه دانه، کنجد و ادویه مخصوص</p>
+      </div>
+    </a>
+
+    <a href="#" class="menu-card" style="background-image: url('sausage_egg.jpg');">
+      <div class="menu-text">
+        <h2>سوسیس تخم مرغ</h2>
+        <span class="price">179.000</span>
+        <p>سوسیس، تخم مرغ، ادویه مخصوص</p>
+      </div>
+    </a>
+
+    <a href="#" class="menu-card" style="background-image: url('nimro.jpg');">
+      <div class="menu-text">
+        <h2>نیمرو</h2>
+        <span class="price">111.000</span>
+        <p>3 عدد تخم مرغ</p>
+      </div>
+    </a>
+
   </div>
 
   <!-- Footer Buttons -->
