@@ -1,76 +1,232 @@
-<style>
-  /* کارت‌ها - متن و عکس حفظ، استایل فوتر */
-  .menu-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    padding: 20px;
-    max-width: 1000px;
-    margin: 20px auto;
-  }
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cafe 365</title>
 
-  .menu-card {
-    position: relative;
-    height: 50px; /* کوتاه مثل فوتر */
-    border-radius: 12px; /* شکل مستطیل نرم */
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #ffd700; /* خط طلایی */
-    color: #ffd700; /* متن طلایی */
-    text-decoration: none;
-    box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    opacity: 0;
-    transform: translateY(20px);
-  }
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=IranNastaliq&display=swap" rel="stylesheet">
 
-  .menu-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.4); /* تیره کردن عکس مثل فوتر */
-    transition: background 0.3s ease;
-  }
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+      overflow-x: hidden;
+      font-family: "Vazirmatn", sans-serif;
+      background: linear-gradient(135deg, #006666 20%, #1e1e1e 100%);
+      color: #fff;
+    }
 
-  .menu-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    /* نوار بالا */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      border-bottom: 2px solid rgba(255,215,0,0.3);
+    }
+    .navbar img.logo { height: 36px; }
 
-  .menu-card:hover::before {
-    background: rgba(0,0,0,0.25);
-  }
+    /* بنر */
+    .banner {
+      margin-top: 60px;
+      width: 100%;
+      height: 200px;
+      background: url('b4.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 4px solid #ffd700;
+    }
+    .banner h1 {
+      font-family: "IranNastaliq", cursive;
+      font-size: 2.5rem;
+      text-shadow:
+         2px 2px 4px rgba(0,0,0,0.6),
+        -2px -2px 4px rgba(0,0,0,0.6),
+         1px -1px 2px rgba(0,0,0,0.5),
+        -1px 1px 2px rgba(0,0,0,0.5);
+      background: linear-gradient(to bottom, #ffd900 0%, #b8860b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-  .menu-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px 4px rgba(255,215,0,0.4);
-  }
+    /* جمله زیر بنر */
+    header p {
+      text-align: center;
+      font-family: "IranNastaliq", cursive;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 18px 10px 0;
+      text-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
 
-  .menu-card h2 {
-    position: relative;
-    font-family: "IranNastaliq", cursive;
-    font-size: 1rem;
-    margin: 0;
-    z-index: 1;
-    color: #ffd700;
-  }
-
-  /* موبایل */
-  @media (max-width: 600px) {
+    /* کارت‌ها - متن و عکس حفظ، استایل فوتر */
     .menu-container {
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      padding: 14px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 20px auto;
     }
+
     .menu-card {
-      height: 44px;
+      position: relative;
+      height: 50px; /* کوتاه مثل فوتر */
+      border-radius: 12px;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #ffd700; /* حاشیه طلایی */
+      color: #ffd700;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      opacity: 0;
+      transform: translateY(20px);
     }
+
+    .menu-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4); /* تیره کردن عکس */
+      transition: background 0.3s ease;
+    }
+
+    .menu-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .menu-card:hover::before {
+      background: rgba(0,0,0,0.25);
+    }
+
+    .menu-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px 4px rgba(255,215,0,0.4);
+    }
+
     .menu-card h2 {
-      font-size: 0.9rem;
+      position: relative;
+      font-family: "IranNastaliq", cursive;
+      font-size: 1rem;
+      margin: 0;
+      z-index: 1;
+      color: #ffd700;
     }
-  }
-</style>
+
+    /* دکمه‌های پایین کوچک و کنار هم */
+    .footer-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 10px 20px;
+      background: rgba(0,0,0,0.8);
+      border-top: 2px solid rgba(255,215,0,0.15);
+    }
+    .footer-buttons a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #ffd700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      transition: transform 0.25s ease;
+    }
+    .footer-buttons a:hover { transform: scale(1.1); }
+    .footer-buttons img {
+      width: 60%;
+      height: 60%;
+      object-fit: contain;
+    }
+
+    /* موبایل */
+    @media (max-width: 600px) {
+      .banner { height: 160px; margin-top: 54px; }
+      .banner h1 { font-size: 1.6rem; padding: 6px 12px; }
+      header p { font-size: 1.3rem; margin-top: 14px; }
+
+      .menu-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 14px;
+      }
+      .menu-card { height: 44px; }
+      .menu-card h2 { font-size: 0.9rem; }
+
+      .footer-buttons { gap: 8px; padding: 12px 10px 16px; }
+      .footer-buttons a { width: 36px; height: 36px; border-width: 2px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- navbar -->
+  <div class="navbar">
+    <img src="logo.png" class="logo" alt="Cafe 365">
+  </div>
+
+  <!-- بنر -->
+  <div class="banner">
+    <h1>CAFE BALCONY 365</h1>
+  </div>
+
+  <!-- جمله -->
+  <header>
+    <p>پناه حال خوب هر روز سال</p>
+  </header>
+
+  <!-- کارت‌ها -->
+  <div class="menu-container">
+    <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');"><h2>صبح دلبرانه</h2></a>
+    <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye khial.jpg');"><h2>خنکای خیال</h2></a>
+    <a href="menu3.html" class="menu-card" style="background-image: url('garm va delneshin.jpg');"><h2>گرم و دلنشین</h2></a>
+    <a href="menu4.html" class="menu-card" style="background-image: url('delbarhaye shirin.jpg');"><h2>دلبرهای شیرین</h2></a>
+    <a href="menu5.html" class="menu-card" style="background-image: url('Sabok va salem.jpg');"><h2>سبک و سالم</h2></a>
+    <a href="menu6.html" class="menu-card" style="background-image: url('sofre garm.jpg');"><h2>سفره‌ی گرم 365</h2></a>
+  </div>
+
+  <!-- دکمه‌های پایین -->
+  <div class="footer-buttons">
+    <a href="gallery.html"><img src="photo.png" alt="گالری"></a>
+    <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="map.png" alt="نقشه"></a>
+    <a href="https://t.me/yourpage" target="_blank"><img src="telegram.png" alt="تلگرام"></a>
+    <a href="https://instagram.com/yourpage" target="_blank"><img src="instagram.png" alt="اینستاگرام"></a>
+    <a href="hafez.html"><img src="events.png" alt="رویداد"></a>
+    <a href="#"><img src="call.png" alt="تماس"></a>
+  </div>
+
+  <script>
+    // اسکرول موشن سینمایی با Glow و تأخیر
+    const cards = document.querySelectorAll('.menu-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const card = entry.target;
+          const delay = Array.from(cards).indexOf(card) * 150; // تأخیر 150ms بین کارت‌ها
+          setTimeout(() => card.classList.add('visible'), delay);
+          observer.unobserve(card);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+</body>
+</html>
