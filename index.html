@@ -66,7 +66,7 @@
       text-shadow: 0 0 10px rgba(0,0,0,0.4);
     }
 
-    /* کارت‌ها - ۲ در ۳ با موشن اسکرول با تأخیر */
+    /* کارت‌ها - ۲ در ۳ با موشن سینمایی */
     .menu-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -90,14 +90,14 @@
       text-decoration: none;
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
       opacity: 0;
-      transform: translateY(20px);
-      transition: transform 0.3s ease, opacity 0.6s ease;
+      transform: translateY(40px) scale(0.95);
+      transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.8s ease-in-out;
     }
     .menu-card.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
-    .menu-card:hover { transform: translateY(-6px); }
+    .menu-card:hover { transform: translateY(-6px) scale(1.03); }
     .menu-card::before {
       content: "";
       position: absolute;
@@ -197,13 +197,13 @@
   </div>
 
   <script>
-    // اسکرول موشن با تأخیر بین کارت‌ها
+    // اسکرول موشن سینمایی با تأخیر بین کارت‌ها
     const cards = document.querySelectorAll('.menu-card');
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
           const card = entry.target;
-          const delay = Array.from(cards).indexOf(card) * 150; // 150ms تأخیر بین کارت‌ها
+          const delay = Array.from(cards).indexOf(card) * 150; // تأخیر 150ms بین کارت‌ها
           setTimeout(() => card.classList.add('visible'), delay);
           observer.unobserve(card);
         }
