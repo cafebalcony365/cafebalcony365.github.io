@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   <title>Cafe 365</title>
 
@@ -9,66 +9,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=IranNastaliq&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
+    /* پایه */
+    * { box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+      overflow-x: hidden; /* مهم: جلوگیری از اسکرول افقی کلی صفحه */
+      -webkit-text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
-      margin: 0;
       font-family: "Vazirmatn", Tahoma, sans-serif;
       background: linear-gradient(135deg, #006666 20%, #1e1e1e 100%);
       color: #fff;
       min-height: 100vh;
-      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* 🔸 نوار شناور بالا */
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* نوار بالایی فیکس */
     .navbar {
       position: fixed;
       top: 0;
-      right: 0;
       left: 0;
-      z-index: 100;
+      right: 0;
+      z-index: 200;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(8px);
-      border-bottom: 2px solid rgba(255, 215, 0, 0.4);
-      transition: background 0.4s ease, padding 0.3s ease;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 18px;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(6px);
+      border-bottom: 2px solid rgba(255,215,0,0.25);
+      transition: background 0.25s ease, padding 0.25s ease;
     }
+    .navbar.scrolled { background: rgba(0,0,0,0.85); padding: 6px 18px; }
 
-    .navbar.scrolled {
-      background: rgba(0, 0, 0, 0.85);
-      padding: 6px 20px;
-    }
+    .navbar .logo { height: 42px; width: auto; display: block; }
+    .navbar .links { display: flex; gap: 10px; align-items:center; }
+    .navbar a { color: #ffd700; text-decoration: none; font-weight: 700; padding: 6px; }
+    .navbar a:hover { color: #fff; }
 
-    .navbar img.logo {
-      height: 40px;
-      transition: transform 0.3s ease;
-    }
-
-    .navbar.scrolled img.logo {
-      transform: scale(0.85);
-    }
-
-    .navbar a {
-      color: #ffd700;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 0 8px;
-      transition: color 0.3s ease;
-    }
-
-    .navbar a:hover {
-      color: #fff;
-    }
-
-    /* بنر */
+    /* بنر (فاصله از navbar رو رعایت می‌کنه) */
     .banner {
-      margin-top: 70px; /* فاصله از navbar */
+      margin-top: 70px;
       width: 100%;
       height: 230px;
       background: url('b4.jpg') center/cover no-repeat;
@@ -77,46 +68,45 @@
       justify-content: center;
       border-bottom: 4px solid #ffd700;
     }
-
     .banner h1 {
-      font-family: "IranNastaliq", cursive;
-      font-size: 2.5rem;
-      color: #ffd900;
-      text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-      background: rgba(0, 0, 0, 0.5);
-      padding: 10px 25px;
-      border-radius: 20px;
       margin: 0;
+      font-family: "IranNastaliq", cursive;
+      font-size: 2.4rem;
+      color: #ffd900;
+      padding: 8px 20px;
+      border-radius: 16px;
+      background: rgba(0,0,0,0.45);
+      text-shadow: 0 0 10px rgba(0,0,0,0.6);
     }
 
     header p {
-      margin-top: 15px;
+      margin: 12px auto 0;
+      text-align: center;
       font-family: "IranNastaliq", cursive;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      background: linear-gradient(90deg, #40E0D0, #2f2f2f);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-      text-align: center;
+      background: linear-gradient(90deg,#40E0D0,#2f2f2f);
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.25);
     }
 
-    /* کارت‌ها */
+    /* کانتینر کارت‌ها (دسکتاپ: grid، موبایل: افقی اسکرول) */
     .menu-container {
+      max-width: 1100px;
+      margin: 36px auto;
+      padding: 0 18px 24px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 25px;
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
+      gap: 22px;
+      width: 100%;
     }
 
     .menu-card {
       position: relative;
-      border-radius: 25px;
-      overflow: hidden;
-      cursor: pointer;
       height: 220px;
+      border-radius: 20px;
+      overflow: hidden;
       display: flex;
       align-items: flex-end;
       justify-content: center;
@@ -125,134 +115,100 @@
       background-size: cover;
       background-position: center;
       border: 4px double #ffd700;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      flex-shrink: 0;
     }
-
-    .menu-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .menu-card.visible { opacity: 1; transform: translateY(0); }
 
     .menu-card::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.35);
-      transition: background 0.4s ease;
+      background: rgba(0,0,0,0.34);
+      transition: background .3s;
     }
-
-    .menu-card:hover::before {
-      background: rgba(0, 0, 0, 0.15);
-    }
+    .menu-card:hover::before { background: rgba(0,0,0,0.14); }
 
     .menu-card h2 {
       position: relative;
-      margin: 0 0 20px;
-      font-size: 1.4rem;
-      font-family: "IranNastaliq", cursive;
-      text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
       z-index: 2;
-    }
-
-    .menu-card:hover {
-      transform: translateY(-5px) scale(1.03);
-      box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4);
-    }
-
-    /* موبایل */
-    @media (max-width: 600px) {
-      .navbar {
-        flex-direction: column;
-        align-items: center;
-        padding: 8px;
-      }
-
-      .navbar.scrolled {
-        padding: 5px;
-      }
-
-      .navbar img.logo {
-        height: 35px;
-      }
-
-      .banner {
-        height: 180px;
-      }
-
-      .banner h1 {
-        font-size: 1.9rem;
-        padding: 6px 15px;
-      }
-
-      header p {
-        font-size: 1.2rem;
-        margin: 10px;
-      }
-
-      .menu-container {
-        display: flex;
-        overflow-x: auto;
-        gap: 15px;
-        padding: 15px;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .menu-card {
-        min-width: 180px;
-        height: 160px;
-        flex-shrink: 0;
-        scroll-snap-align: center;
-      }
-
-      .menu-card h2 {
-        font-size: 1rem;
-      }
+      margin: 0 0 16px;
+      font-family: "IranNastaliq", cursive;
+      font-size: 1.35rem;
+      text-shadow: 0 0 8px rgba(0,0,0,0.7);
     }
 
     /* دکمه‌های پایین */
     .footer-buttons {
       display: flex;
+      gap: 18px;
       justify-content: center;
+      align-items: center;
+      padding: 18px;
+      border-top: 2px solid rgba(255,215,0,0.18);
+      background: rgba(0,0,0,0.8);
       flex-wrap: wrap;
-      gap: 20px;
-      padding: 15px;
-      border-top: 2px solid rgba(255, 215, 0, 0.3);
-      background: rgba(0, 0, 0, 0.85);
     }
-
     .footer-buttons a {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 3px solid #ffd700;
-      background: #222;
-      display: flex;
+      width: 56px;
+      height: 56px;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 50%;
+      border: 3px solid #ffd700;
+      background: #111;
+      text-decoration: none;
+    }
+    .footer-buttons img { width: 68%; height: 68%; object-fit: contain; }
+
+    /* ===== موبایل ===== */
+    @media (max-width: 760px) {
+      .banner { height: 180px; margin-top: 66px; }
+      .banner h1 { font-size: 1.9rem; padding: 6px 14px; }
+
+      /* منو: حالت افقی با اسکرول نرم */
+      .menu-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 14px;
+        padding: 12px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        width: 100%;
+      }
+
+      .menu-card {
+        min-width: 170px;
+        height: 160px;
+        border-radius: 14px;
+        scroll-snap-align: center;
+      }
+
+      .menu-card h2 { font-size: 1rem; margin-bottom: 12px; }
+
+      /* navbar موبایل ستاپ */
+      .navbar { padding: 8px 12px; flex-direction: row; }
+      .navbar .links { display: none; } /* اگر خواستی همبرگر بزاری اینجا نمایش بده */
+      .navbar .logo { height: 36px; }
     }
 
-    .footer-buttons a:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
-    }
-
-    .footer-buttons img {
-      width: 70%;
-      height: 70%;
-      object-fit: contain;
+    /* بیشتر ریسپانسیو کوچک */
+    @media (max-width: 420px) {
+      .menu-card { min-width: 150px; height: 150px; }
+      .banner { height: 150px; margin-top: 64px; }
+      .banner h1 { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
-  <!-- 🔹 نوار بالا -->
-  <div class="navbar">
+  <!-- navbar -->
+  <div class="navbar" role="navigation">
     <img src="logo.png" alt="Cafe 365" class="logo" />
-    <div>
+    <div class="links" aria-hidden="true">
       <a href="#">خانه</a>
       <a href="#menu">منو</a>
       <a href="gallery.html">گالری</a>
@@ -262,7 +218,7 @@
   </div>
 
   <!-- بنر -->
-  <div class="banner">
+  <div class="banner" aria-hidden="true">
     <h1>CAFE BALCONY 365</h1>
   </div>
 
@@ -270,7 +226,7 @@
     <p>پناه حال خوب هر روز سال</p>
   </header>
 
-  <!-- کارت‌ها -->
+  <!-- کارت‌های منو -->
   <div id="menu" class="menu-container">
     <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');">
       <h2>صبح دلبرانه</h2>
@@ -292,32 +248,37 @@
     </a>
   </div>
 
-  <!-- دکمه‌ها -->
+  <!-- دکمه‌های پایین -->
   <div id="contact" class="footer-buttons">
-    <a href="https://instagram.com/yourpage" target="_blank"><img src="instagram.png" alt="اینستاگرام"></a>
-    <a href="https://t.me/yourpage" target="_blank"><img src="telegram.png" alt="تلگرام"></a>
-    <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="map.png" alt="موقعیت"></a>
+    <a href="https://instagram.com/yourpage" target="_blank" rel="noopener"><img src="instagram.png" alt="اینستاگرام"></a>
+    <a href="https://t.me/yourpage" target="_blank" rel="noopener"><img src="telegram.png" alt="تلگرام"></a>
+    <a href="https://maps.google.com/?q=YourLocation" target="_blank" rel="noopener"><img src="map.png" alt="موقعیت"></a>
     <a href="gallery.html"><img src="photo.png" alt="گالری"></a>
     <a href="hafez.html"><img src="events.png" alt="همایش"></a>
   </div>
 
-  <!-- اسکریپت‌ها -->
   <script>
-    // افکت ظاهر کارت‌ها هنگام اسکرول
-    const cards = document.querySelectorAll('.menu-card');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
-    cards.forEach(card => observer.observe(card));
+    // IntersectionObserver برای انیمیشن کارت‌ها هنگام دیده شدن
+    (function(){
+      const cards = document.querySelectorAll('.menu-card');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.2 });
+      cards.forEach(c => observer.observe(c));
+    })();
 
     // تغییر استایل navbar هنگام اسکرول
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) navbar.classList.add('scrolled');
-      else navbar.classList.remove('scrolled');
-    });
+    (function(){
+      const navbar = document.querySelector('.navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 48) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+      }, { passive: true });
+    })();
   </script>
 </body>
 </html>
