@@ -46,14 +46,19 @@
       border-bottom: 4px solid #ffd700;
     }
     .banner h1 {
-      font-family: "IranNastaliq", cursive;
-      font-size: 2rem;
-      color: #ffd900;
-      background: rgba(0,0,0,0.45);
-      padding: 6px 16px;
-      border-radius: 12px;
-      text-shadow: 0 0 8px rgba(0,0,0,0.7);
-    }
+  font-family: "IranNastaliq", cursive;
+  font-size: 2rem;
+  color: #ffd900;
+  background: none; /* برداشتن نوار پشت متن */
+  padding: 0; /* حذف padding اضافی */
+  border-radius: 0;
+  text-shadow:
+    1px 1px 0 rgba(0,0,0,0.5),
+   -1px -1px 0 rgba(0,0,0,0.5),
+    1px -1px 0 rgba(0,0,0,0.5),
+   -1px 1px 0 rgba(0,0,0,0.5); /* ایجاد افکت حک */
+}
+
 
     /* جمله زیر بنر */
     header p {
