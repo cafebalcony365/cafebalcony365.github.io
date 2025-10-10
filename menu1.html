@@ -33,7 +33,7 @@
     }
     .navbar img.logo { height: 36px; }
 
-    /* Ticker روان و پیوسته */
+    /* Ticker چپ به راست */
     .ticker-wrapper {
       position: fixed;
       top: 0;
@@ -48,23 +48,23 @@
     .ticker {
       display: inline-block;
       white-space: nowrap;
-      will-change: transform;
+      direction: ltr; /* حرکت متن از چپ به راست */
     }
 
     .ticker span {
       display: inline-block;
       font-family: "IranNastaliq", cursive;
-      color: #00ffff; /* فیروزه‌ای روشن */
+      color: #00ffff; /* فیروزه‌ای */
       font-size: 1.3rem;
       line-height: 40px;
       font-weight: bold;
-      padding-left: 100%; /* متن ابتدا خارج از صفحه */
+      transform: translateX(-100%); /* ابتدا خارج از صفحه سمت چپ */
       animation: scroll 15s linear infinite;
     }
 
     @keyframes scroll {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
 
     /* Banner */
@@ -100,6 +100,7 @@
       padding: 10px;
       gap: 10px;
       flex-wrap: nowrap;
+      margin-top: 20px;
     }
     .menu-card {
       flex: 1 1 calc(100% / 6);
@@ -135,6 +136,45 @@
     .menu-card:hover { transform: scale(1.05); }
     .menu-card:hover::before { background: rgba(0,0,0,0.15); }
 
+    /* Menu List */
+    .menu-list {
+      padding: 20px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 12px;
+      margin: 20px 10px;
+    }
+
+    .menu-list h2 {
+      font-family: "IranNastaliq", cursive;
+      color: #ffd700;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .menu-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.3);
+      font-size: 1.1rem;
+      color: #fff;
+      font-family: "Vazirmatn", sans-serif;
+    }
+
+    .item-name {
+      font-weight: bold;
+    }
+
+    .item-price {
+      color: #00ffff;
+    }
+
     /* Footer Buttons */
     .footer-buttons {
       display: flex;
@@ -164,7 +204,10 @@
 
     /* Responsive */
     @media (max-width: 900px) { .menu-card h2 { font-size: 0.9rem; } }
-    @media (max-width: 600px) { .menu-card h2 { font-size: 0.7rem; } }
+    @media (max-width: 600px) { 
+      .menu-card h2 { font-size: 0.7rem; }
+      .menu-list li { font-size: 0.95rem; }
+    }
   </style>
 </head>
 
@@ -194,6 +237,19 @@
     <a href="menu4.html" class="menu-card" style="background-image: url('delbarhaye shirin.jpg');"><h2>دلبرهای شیرین</h2></a>
     <a href="menu5.html" class="menu-card" style="background-image: url('Sabok va salem.jpg');"><h2>سبک و سالم</h2></a>
     <a href="menu6.html" class="menu-card" style="background-image: url('sofre garm.jpg');"><h2>سفره‌ی گرم 365</h2></a>
+  </div>
+
+  <!-- Menu List -->
+  <div class="menu-list">
+    <h2>منوی ما</h2>
+    <ul>
+      <li><span class="item-name">صبح دلبرانه</span> <span class="item-price">25,000 تومان</span></li>
+      <li><span class="item-name">خنکای خیال</span> <span class="item-price">30,000 تومان</span></li>
+      <li><span class="item-name">گرم و دلنشین</span> <span class="item-price">28,000 تومان</span></li>
+      <li><span class="item-name">دلبرهای شیرین</span> <span class="item-price">35,000 تومان</span></li>
+      <li><span class="item-name">سبک و سالم</span> <span class="item-price">27,000 تومان</span></li>
+      <li><span class="item-name">سفره‌ی گرم 365</span> <span class="item-price">32,000 تومان</span></li>
+    </ul>
   </div>
 
   <!-- Footer Buttons -->
