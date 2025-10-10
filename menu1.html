@@ -24,23 +24,25 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: #111; /* مشکی یکدست */
+      background: rgba(0,0,0,0.6);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 10px 16px;
+      border-bottom: 2px solid rgba(255,215,0,0.3);
     }
     .navbar img.logo { height: 36px; }
 
-    /* Ticker یکپارچه و روان */
+    /* Ticker اصلاح‌شده */
     .ticker-wrapper {
       position: fixed;
-      top: 40px; /* زیر Navbar */
+      top: 0; 
       left: 0;
       width: 100%;
       height: 40px;
       overflow: hidden;
-      background: #111; /* پس‌زمینه مشکی یکدست */
+      background: #111;
+      border-bottom: 2px solid #ffd700;
       z-index: 99;
     }
     .ticker {
@@ -54,7 +56,7 @@
       font-size: 1.2rem;
       line-height: 40px;
       font-weight: bold;
-      animation: scroll 10s linear infinite;
+      animation: scroll 10s linear infinite; /* سرعت حرکت */
     }
     @keyframes scroll {
       0% { transform: translateX(0); }
@@ -63,14 +65,14 @@
 
     /* Banner */
     .banner {
-      margin-top: 80px; /* جا برای Navbar و Ticker */
+      margin-top: 60px; /* جا برای Ticker */
       width: 100%;
       height: 200px;
       background: url('b4.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      border-bottom: 4px solid #ffd700;
     }
     .banner h1 {
       font-family: "IranNastaliq", cursive;
@@ -168,7 +170,7 @@
     <img src="logo.png" class="logo" alt="Cafe 365">
   </div>
 
-  <!-- Ticker -->
+  <!-- Ticker اصلاح‌شده -->
   <div class="ticker-wrapper">
     <div class="ticker">
       <span>پناه حال خوب هر روز سال</span>
