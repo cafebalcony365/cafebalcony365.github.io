@@ -34,33 +34,41 @@
     }
     .navbar img.logo { height: 36px; }
 
-    /* متن متحرک (Ticker) */
-    .ticker {
+    /* متن متحرک پیشرفته (Ticker روان و بی‌وقفه) */
+    .ticker-wrapper {
       position: fixed;
-      top: 60px; /* زیر Navbar */
+      top: 0; /* چسبیده به سقف */
       left: 0;
       width: 100%;
+      height: 40px;
       overflow: hidden;
-      background: rgba(0,0,0,0.5);
-      color: #ffd700;
-      font-size: 1.2rem;
-      white-space: nowrap;
+      background: rgba(0,0,0,0.7);
+      border-bottom: 2px solid #ffd700;
       z-index: 99;
-      padding: 8px 0;
     }
-    .ticker p {
-      display: inline-block;
-      padding-left: 100%;
+    .ticker {
+      display: flex;
+      width: max-content;
+      white-space: nowrap;
       animation: scroll 15s linear infinite;
     }
+    .ticker span {
+      display: inline-block;
+      padding: 0 50px; /* فاصله بین تکرار متن */
+      color: #ffd700;
+      font-size: 1.2rem;
+      line-height: 40px;
+      font-weight: bold;
+    }
+    /* حرکت بی‌نهایت */
     @keyframes scroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
+      100% { transform: translateX(-50%); }
     }
 
     /* بنر */
     .banner {
-      margin-top: 100px; /* جا برای Navbar و Ticker */
+      margin-top: 60px; /* جا برای Ticker */
       width: 100%;
       height: 200px;
       background: url('b4.jpg') center/cover no-repeat;
@@ -82,7 +90,7 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* کارت‌ها - فیت افقی در ۶ قسمت بدون اسکرول */
+    /* کارت‌ها */
     .menu-container {
       display: flex;
       justify-content: space-between;
@@ -155,13 +163,9 @@
 
     /* واکنش‌گرا */
     @media (max-width: 900px) {
-      .menu-card { flex: 1 1 calc(100% / 6); }
       .menu-card h2 { font-size: 0.9rem; }
     }
-
     @media (max-width: 600px) {
-      .menu-container { gap: 6px; padding: 8px; }
-      .menu-card { flex: 1 1 calc(100% / 6); aspect-ratio: 1/1; }
       .menu-card h2 { font-size: 0.7rem; }
     }
   </style>
@@ -173,9 +177,12 @@
     <img src="logo.png" class="logo" alt="Cafe 365">
   </div>
 
-  <!-- متن متحرک -->
-  <div class="ticker">
-    <p>پناه حال خوب هر روز سال</p>
+  <!-- Ticker پیشرفته -->
+  <div class="ticker-wrapper">
+    <div class="ticker">
+      <span>پناه حال خوب هر روز سال</span>
+      <span>پناه حال خوب هر روز سال</span> <!-- تکرار برای حرکت بی‌وقفه -->
+    </div>
   </div>
 
   <!-- بنر -->
@@ -183,7 +190,7 @@
     <h1>CAFE BALCONY 365</h1>
   </div>
 
-  <!-- کارت‌ها زیر بنر - ۶ قسمت افقی -->
+  <!-- کارت‌ها -->
   <div class="menu-container">
     <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');"><h2>صبح دلبرانه</h2></a>
     <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye khial.jpg');"><h2>خنکای خیال</h2></a>
@@ -193,7 +200,7 @@
     <a href="menu6.html" class="menu-card" style="background-image: url('sofre garm.jpg');"><h2>سفره‌ی گرم 365</h2></a>
   </div>
 
-  <!-- دکمه‌های پایین -->
+  <!-- دکمه‌ها -->
   <div class="footer-buttons">
     <a href="gallery.html"><img src="photo.png" alt="گالری"></a>
     <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="map.png" alt="نقشه"></a>
