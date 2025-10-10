@@ -2,93 +2,90 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Cafe 365</title>
 
-  <!-- فونت فارسی -->
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=IranNastaliq&display=swap" rel="stylesheet">
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
     html, body {
       margin: 0;
       padding: 0;
-      max-width: 100%;
+      width: 100%;
       overflow-x: hidden;
       font-family: "Vazirmatn", sans-serif;
-      background: linear-gradient(135deg, #007070 10%, #1c1c1c 100%);
+      background: linear-gradient(135deg, #007070 15%, #1b1b1b 100%);
       color: #fff;
-      text-align: center;
     }
 
     /* بنر بالا */
     .banner {
       width: 100%;
-      height: 180px;
+      height: 170px;
       background: url('b4.jpg') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-bottom: 4px solid #ffd700;
-      margin-top: 10px;
+      border-bottom: 3px solid #ffd700;
     }
-
     .banner h1 {
       font-family: "IranNastaliq", cursive;
       font-size: 1.8rem;
       color: #ffd900;
+      background: rgba(0,0,0,0.5);
+      padding: 8px 16px;
+      border-radius: 14px;
       text-shadow: 0 0 10px rgba(0,0,0,0.7);
-      background: rgba(0,0,0,0.4);
-      padding: 6px 20px;
-      border-radius: 12px;
     }
 
     /* جمله زیر بنر */
     header p {
+      text-align: center;
       font-family: "IranNastaliq", cursive;
       font-size: 1.5rem;
-      font-weight: bold;
-      margin: 14px 10px;
+      font-weight: 700;
       color: #fff;
-      text-shadow: 0 0 8px rgba(0,0,0,0.7);
+      margin: 18px 10px 10px;
+      text-shadow: 0 0 10px rgba(0,0,0,0.4);
     }
 
-    /* کارت‌های منو (اسکرول افقی) */
+    /* کارت‌های منو */
     .menu-container {
       display: flex;
       overflow-x: auto;
       gap: 14px;
-      padding: 14px;
+      padding: 12px 10px 18px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
-      justify-content: flex-start;
     }
-
     .menu-card {
-      flex: 0 0 auto;
-      min-width: 160px;
+      flex-shrink: 0;
+      scroll-snap-align: center;
+      position: relative;
+      width: 160px;
       height: 150px;
-      border-radius: 18px;
+      border-radius: 16px;
       overflow: hidden;
-      border: 3px double #ffd700;
       background-size: cover;
       background-position: center;
       display: flex;
       align-items: flex-end;
       justify-content: center;
-      scroll-snap-align: center;
-      position: relative;
+      border: 3px double #ffd700;
       color: #fff;
       text-decoration: none;
+      transition: transform 0.3s ease;
     }
-
     .menu-card::before {
       content: "";
       position: absolute;
       inset: 0;
       background: rgba(0,0,0,0.35);
     }
-
     .menu-card h2 {
       position: relative;
       font-family: "IranNastaliq", cursive;
@@ -96,21 +93,19 @@
       margin-bottom: 10px;
       z-index: 1;
     }
+    .menu-card:hover { transform: scale(1.04); }
 
-    /* دکمه‌های پایین (۳×۲) */
-    .footer-buttons {
+    /* دکمه‌های اصلی (۳ در هر ردیف، ۲ ردیف) */
+    .main-buttons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
       justify-items: center;
-      gap: 16px;
-      padding: 26px 10px 36px;
-      background: rgba(0,0,0,0.8);
-      border-top: 2px solid rgba(255,215,0,0.2);
+      padding: 20px 10px 80px; /* فاصله از پایین برای نوار اجتماعی */
     }
-
-    .footer-buttons a {
-      width: 52px;
-      height: 52px;
+    .main-buttons a {
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       border: 3px solid #ffd700;
       display: flex;
@@ -119,12 +114,43 @@
       background: #111;
       transition: transform 0.25s ease;
     }
-
-    .footer-buttons a:hover {
-      transform: scale(1.1);
+    .main-buttons a:hover { transform: scale(1.1); }
+    .main-buttons img {
+      width: 65%;
+      height: 65%;
+      object-fit: contain;
     }
 
-    .footer-buttons img {
+    /* نوار اجتماعی پایین */
+    .social-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.85);
+      border-top: 2px solid rgba(255, 215, 0, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      padding: 8px 0;
+    }
+    .social-bar a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #ffd700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      transition: transform 0.25s ease;
+    }
+    .social-bar a:hover {
+      transform: scale(1.15);
+    }
+    .social-bar img {
       width: 60%;
       height: 60%;
       object-fit: contain;
@@ -133,13 +159,12 @@
 </head>
 
 <body>
-
   <!-- بنر -->
   <div class="banner">
     <h1>CAFE BALCONY 365</h1>
   </div>
 
-  <!-- جمله -->
+  <!-- جمله زیر بنر -->
   <header>
     <p>پناه حال خوب هر روز سال</p>
   </header>
@@ -154,8 +179,8 @@
     <a href="menu6.html" class="menu-card" style="background-image: url('sofre garm.jpg');"><h2>سفره‌ی گرم 365</h2></a>
   </div>
 
-  <!-- دکمه‌های پایین -->
-  <div class="footer-buttons">
+  <!-- دکمه‌های اصلی (۳ در ۲) -->
+  <div class="main-buttons">
     <a href="gallery.html"><img src="photo.png" alt="گالری"></a>
     <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="map.png" alt="نقشه"></a>
     <a href="https://t.me/yourpage" target="_blank"><img src="telegram.png" alt="تلگرام"></a>
@@ -164,5 +189,13 @@
     <a href="#"><img src="call.png" alt="تماس"></a>
   </div>
 
+  <!-- نوار اجتماعی پایین -->
+  <div class="social-bar">
+    <a href="https://instagram.com/yourpage" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+    <a href="https://t.me/yourpage" target="_blank"><img src="telegram.png" alt="Telegram"></a>
+    <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="map.png" alt="Map"></a>
+    <a href="gallery.html"><img src="photo.png" alt="Gallery"></a>
+    <a href="hafez.html"><img src="events.png" alt="Events"></a>
+  </div>
 </body>
 </html>
