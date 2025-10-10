@@ -1,1 +1,244 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cafe 365</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=IranNastaliq&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      max-width: 100%;
+      overflow-x: hidden;
+      font-family: "Vazirmatn", sans-serif;
+      background: linear-gradient(135deg, #006666 20%, #1e1e1e 100%);
+      color: #fff;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+    }
+    .navbar img.logo { height: 36px; }
+
+    .ticker-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      overflow: hidden;
+      background: #111;
+      z-index: 99;
+    }
+    .ticker {
+      display: inline-block;
+      white-space: nowrap;
+      will-change: transform;
+    }
+    .ticker span {
+      display: inline-block;
+      font-family: "IranNastaliq", cursive;
+      color: #00ffff;
+      font-size: 1.3rem;
+      line-height: 40px;
+      font-weight: bold;
+      padding-left: 100%;
+      animation: scroll 15s linear infinite;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .banner {
+      margin-top: 60px;
+      width: 100%;
+      height: 200px;
+      background: url('b4.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .banner h1 {
+      font-family: "IranNastaliq", cursive;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+      background: linear-gradient(to bottom, #ffd900 0%, #b8860b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .menu-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      width: 100%;
+      padding: 10px;
+      gap: 10px;
+      flex-wrap: nowrap;
+      margin-top: 10px;
+    }
+    .menu-card {
+      flex: 1 1 calc(100% / 6);
+      aspect-ratio: 1 / 1;
+      background-size: cover;
+      background-position: center;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 3px double #ffd700;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .menu-card h2 {
+      position: relative;
+      font-family: "IranNastaliq", cursive;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      z-index: 1;
+      text-align: center;
+    }
+    .menu-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.4s ease;
+    }
+    .menu-card:hover { transform: scale(1.05); }
+    .menu-card:hover::before { background: rgba(0,0,0,0.15); }
+
+    .breakfast-menu {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(0,0,0,0.6);
+      border-radius: 12px;
+    }
+    .breakfast-menu h2 {
+      text-align: center;
+      font-family: "IranNastaliq", cursive;
+      font-size: 1.8rem;
+      color: #00ffff;
+      margin-bottom: 20px;
+    }
+    .breakfast-item {
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    .breakfast-item span.name {
+      color: #ffd700;
+      font-family: "IranNastaliq", cursive;
+      font-size: 1.1rem;
+    }
+    .breakfast-item span.price {
+      float: left;
+      color: #00ffff;
+      font-weight: bold;
+    }
+    .breakfast-item p {
+      margin: 2px 0 0;
+      font-size: 0.9rem;
+      color: #fff;
+      clear: both;
+    }
+    .breakfast-item::after { content: ""; display: block; clear: both; }
+
+    .footer-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 10px 20px;
+      background: rgba(0,0,0,0.8);
+      border-top: 2px solid rgba(255,215,0,0.15);
+    }
+    .footer-buttons a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #ffd700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #111;
+      transition: transform 0.25s ease;
+    }
+    .footer-buttons a:hover { transform: scale(1.1); }
+    .footer-buttons img { width: 60%; height: 60%; object-fit: contain; }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <img src="logo.png" class="logo" alt="Cafe 365">
+  </div>
+
+  <div class="ticker-wrapper">
+    <div class="ticker">
+      <span>پناه حال خوب هر روز سال</span>
+    </div>
+  </div>
+
+  <div class="banner">
+    <h1>CAFE BALCONY 365</h1>
+  </div>
+
+  <div class="menu-container">
+    <a href="menu1.html" class="menu-card" style="background-image: url('sobhe delbarane.jpg');"><h2>صبح دلبرانه</h2></a>
+    <a href="menu2.html" class="menu-card" style="background-image: url('khonakaye khial.jpg');"><h2>خنکای خیال</h2></a>
+    <a href="menu3.html" class="menu-card" style="background-image: url('garm va delneshin.jpg');"><h2>گرم و دلنشین</h2></a>
+    <a href="menu4.html" class="menu-card" style="background-image: url('delbarhaye shirin.jpg');"><h2>دلبرهای شیرین</h2></a>
+    <a href="menu5.html" class="menu-card" style="background-image: url('Sabok va salem.jpg');"><h2>سبک و سالم</h2></a>
+    <a href="menu6.html" class="menu-card" style="background-image: url('sofre garm.jpg');"><h2>سفره‌ی گرم 365</h2></a>
+  </div>
+
+  <!-- منوی دلبرهای شیرین -->
+  <div class="breakfast-menu">
+    <h2>دلبرهای شیرین</h2>
+
+    <div class="breakfast-item"><span class="name">کیک اسنیکرز</span><span class="price">148.000</span></div>
+    <div class="breakfast-item"><span class="name">کیک نوتلا</span><span class="price">139.000</span></div>
+    <div class="breakfast-item"><span class="name">کیک شکلاتی</span><span class="price">99.000</span></div>
+    <div class="breakfast-item"><span class="name">چیز کیک لوتوس</span><span class="price">148.000</span></div>
+    <div class="breakfast-item"><span class="name">کیک هویج گردو</span><span class="price">128.000</span></div>
+    <div class="breakfast-item"><span class="name">کروسان شکلاتی</span><span class="price">216.000</span></div>
+    <div class="breakfast-item"><span class="name">کیک سه شیر</span><span class="price">138.000</span></div>
+    <div class="breakfast-item"><span class="name">کیک روز</span><span class="price">138.000</span></div>
+    <div class="breakfast-item"><span class="name">کوکی</span><span class="price">72.000</span></div>
+    <div class="breakfast-item"><span class="name">آفاگاتو</span><span class="price">127.000</span></div>
+    <div class="breakfast-item"><span class="name">شیک اسپرسو</span><span class="price">178.000</span></div>
+    <div class="breakfast-item"><span class="name">شیک بیسکوئیت</span><span class="price">149.000</span></div>
+    <div class="breakfast-item"><span class="name">شیک لوتوس</span><span class="price">159.000</span></div>
+    <div class="breakfast-item"><span class="name">شیک پاپکورن</span><span class="price">168.000</span></div>
+    <div class="breakfast-item"><span class="name">شیک نوتلا</span><span class="price">178.000</span></div>
+    <div class="breakfast-item"><span class="name">شیک کره بادام زمینی</span><span class="price">172.000</span></div>
+    <div class="breakfast-item"><span class="name">شیک شکلات</span><span class="price">149.000</span></div>
+    <div class="breakfast-item"><span class="name">شیک وانیل</span><span class="price">139.000</span></div>
+  </div>
+
+  <div class="footer-buttons">
+    <a href="gallery.html"><img src="photo.png" alt="گالری"></a>
+    <a href="https://maps.google.com/?q=YourLocation" target="_blank"><img src="map.png" alt="نقشه"></a>
+    <a href="https://t.me/yourpage" target="_blank"><img src="telegram.png" alt="تلگرام"></a>
+    <a href="https://instagram.com/yourpage" target="_blank"><img src="instagram.png" alt="اینستاگرام"></a>
+    <a href="hafez.html"><img src="events.png" alt="رویداد"></a>
+    <a href="#"><img src="call.png" alt="تماس"></a>
+  </div>
+</
 
